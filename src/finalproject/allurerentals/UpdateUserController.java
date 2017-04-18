@@ -157,7 +157,7 @@ public static List<String> items = new ArrayList<>();
             }
             try {
                 PreparedStatement p;
-                //PreparedStatement p2;
+                
                 p = conn.prepareStatement("Insert Into theClients set"
                         + " cname=?, phoneNo=?,"
                         + " address=?, items =? "
@@ -283,6 +283,7 @@ public static List<String> items = new ArrayList<>();
 
             try {
                 PreparedStatement p;
+                
                 p = conn.prepareStatement("update theClients set"
                         + " cname=?, phoneNo=?,"
                         + " address=?, items =? "

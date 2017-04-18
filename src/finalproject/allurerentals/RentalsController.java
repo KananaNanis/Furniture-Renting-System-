@@ -103,12 +103,12 @@ public class RentalsController implements Initializable {
         try {
             java.sql.Statement s = conn.createStatement();
             java.sql.ResultSet r = s.executeQuery("SELECT * FROM theClients");
-            
+            System.out.println("TABLE SELECTED");
             while (r.next()) {
                 myList.add(new RentalsJavaClass(r.getString("cname"),r.getString("phoneNo")
                         ,r.getString("address"),r.getString("items"),r.getString("quantity"),r.getString("theDate")));
 
-                
+                System.out.println("TABLE again");
                 nameCol.setCellValueFactory(cellData -> cellData.getValue().nameProperty());
                  pnumberCol.setCellValueFactory(cellData -> cellData.getValue().pNumProperty());
                 //pnumberCol.setCellValueFactory(cellData -> cellData.getValue().pNumProperty());
@@ -118,6 +118,7 @@ public class RentalsController implements Initializable {
                 dateCol.setCellValueFactory(cellData -> cellData.getValue().dateProperty());
                 
                 clientsTable.setItems(myList);
+                System.out.println("do sumn");
 
             }
             
@@ -129,7 +130,10 @@ public class RentalsController implements Initializable {
             
             System.out.println(ex);
             
+            
+            
         }
+        System.out.println("COPIED TO TABLE");
         
         FilteredList<RentalsJavaClass> filteredData = new FilteredList<>(myList, p -> true);
         searchTxtField.textProperty().addListener((observable, oldValue, newValue) -> {
@@ -325,43 +329,17 @@ private void showDetailStage(RentalsJavaClass selectedEmployee, boolean isNew,St
     @FXML
     private void deleteAction(ActionEvent event) {
       
-        
-        //RentalsJavaClass client= null;
-        //int selectedIndex = clientsTable.getSelectionModel().getSelectedIndex();
-        //if (selectedIndex >= 0) {
-          //  client= clientsTable.getItems().get(selectedIndex);
-        //add additional confirmation before deletion
-//        try {
-//            Class.forName("com.mysql.jdbc.Driver").newInstance();
-//            conn = java.sql.DriverManager.getConnection(
-//                    "jdbc:mysql://localhost:3300/allureRentals?user=root&password=nash@15492");
-//            
-//            PreparedStatement p;
-//            p = conn.prepareStatement("delete from theClients where  cname=?");
-//            p.setString(1, client.getName());
-//            
-//            p.execute();
-//        }
-//        catch (Exception e) {
-//            System.err.println(e);
-//            //System.exit(0);
-//        }
-       // clientsTable.getItems().remove(selectedIndex);
-        //System.out.println(selectedIndex);
-        //int selected=selectedIndex +1; 
-        
-        RentalsJavaClass client = null;
+      RentalsJavaClass selectedClient = null;
         int selectedIndex = clientsTable.getSelectionModel().getSelectedIndex();
         if (selectedIndex >= 0) {
-           // client = clientsTable.getItems().get(selectedIndex);
+            selectedClient = clientsTable.getItems().get(selectedIndex);
             //add additional confirmation before deletion
             
-            //deleteRecord(client.getName());
+            deleteRecord(selectedClient.getName());
             clientsTable.getItems().remove(selectedIndex);
-        }
+        }  
         
-}
-        
+    }
     
         public void deleteRecord(String cname){
         java.sql.Connection conn = null;

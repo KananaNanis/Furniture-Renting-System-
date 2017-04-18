@@ -111,16 +111,20 @@ public class FXMLDocumentController implements Initializable {
 //                    Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
 //                   alert.setContentText("Login failure!!Please Register");
 //                   alert.showAndWait();
+//                   
+//                   Alert alert = new Alert(Alert.AlertType.INFORMATION, "Login failure!!Please Register", ButtonType.OK);
+//                   alert.getDialogPane();//.setMinHeight(Region.USE_PREF_SIZE);
+//                   alert.show();
 //                  Optional<ButtonType> result = alert.showAndWait();
 //            if (result.get() == ButtonType.OK){
 //                alert.close();
 //            }
                  
 //                    //checkValidation.setText("Login failure!!Please Register");
-                    Parent root = FXMLLoader.load(getClass().getResource("popUp.fxml"));
-                        scene = new Scene(root);
-                        Stage stage = (Stage) logInBtn.getScene().getWindow();
-                        stage.setScene(scene);
+//                    Parent root = FXMLLoader.load(getClass().getResource("popUp.fxml"));
+//                        scene = new Scene(root);
+//                        Stage stage = (Stage) logInBtn.getScene().getWindow();
+//                        stage.setScene(scene);
                 }
             } catch (final Exception e) {
             }
