@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" fx:id="regAnchorPane" prefHeight="549.0" prefWidth="681.0" styleClass="mainFxmlClass" stylesheets="@AllureCSS.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="finalproject.allurerentals.RegistrationPageController">
+   <children>
+      <Label layoutX="192.0" layoutY="10.0" text="Allure Rentals">
+         <font>
+            <Font size="36.0" />
+         </font></Label>
+      <Label layoutX="209.0" layoutY="63.0" prefHeight="30.0" prefWidth="173.0" text="Registration Form">
+         <font>
+            <Font size="20.0" />
+         </font></Label>
+      <Label layoutX="237.0" layoutY="132.0" text="Username" textFill="#f80e06">
+         <font>
+            <Font size="20.0" />
+         </font></Label>
+      <Label layoutX="240.0" layoutY="194.0" text="Password" textFill="#f80e06">
+         <font>
+            <Font size="20.0" />
+         </font></Label>
+      <Label layoutX="215.0" layoutY="257.0" text="Confirm Password" textFill="#f80e06">
+         <font>
+            <Font size="20.0" />
+         </font></Label>
+      <Label layoutX="233.0" layoutY="320.0" text="Email Address" textFill="#074cf7">
+         <font>
+            <Font size="20.0" />
+         </font></Label>
+      <Button fx:id="signUpBtn" layoutX="212.0" layoutY="404.0" mnemonicParsing="false" onAction="#signUpAction" text="Sign Up" textFill="#f80e06">
+         <font>
+            <Font size="20.0" />
+         </font></Button>
+      <Button fx:id="RegBackBtn" layoutX="380.0" layoutY="404.0" mnemonicParsing="false" onAction="#RegBackAction" prefHeight="44.0" prefWidth="84.0" text="Back" textFill="#f80e06">
+         <font>
+            <Font size="20.0" />
+         </font></Button>
+      <TextField fx:id="regUsername" layoutX="220.0" layoutY="162.0" />
+      <PasswordField fx:id="regPassword" layoutX="220.0" layoutY="224.0" />
+      <PasswordField fx:id="regCPassword" layoutX="220.0" layoutY="287.0" />
+      <MenuBar fx:id="ReglogOut" layoutX="556.0" stylesheets="@AllureCSS.css">
+        <menus>
+          <Menu fx:id="logOut" mnemonicParsing="false" onAction="#logOutAction" text="Log Out">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Log Out" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+      <TextField fx:id="emailTxtField" layoutX="226.0" layoutY="350.0" />
+      <Label fx:id="checkPassword" layoutX="114.0" layoutY="107.0" prefHeight="27.0" prefWidth="484.0" stylesheets="@AllureCSS.css" />
+      <Label fx:id="checkEmailReg" layoutX="391.0" layoutY="349.0" prefHeight="27.0" prefWidth="240.0" />
+   </children>
+</AnchorPane>

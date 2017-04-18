@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" fx:id="startPage" prefHeight="596.0" prefWidth="756.0" styleClass="mainFxmlClass" stylesheets="@AllureCSS.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="finalproject.allurerentals.StartPageController">
+   <children>
+      <MenuBar layoutX="501.0">
+        <menus>
+          <Menu fx:id="rentals" mnemonicParsing="false" text="Rentals">
+            <items>
+              <MenuItem fx:id="view" mnemonicParsing="false" onAction="#viewAction" text="View Our Services" />
+            </items>
+          </Menu>
+          <Menu fx:id="acc" mnemonicParsing="false" text="Account">
+            <items>
+              <MenuItem fx:id="login" mnemonicParsing="false" onAction="#logAction" text="Log In" />
+            </items>
+          </Menu>
+          <Menu fx:id="exit" mnemonicParsing="false" text="Exit">
+            <items>
+              <MenuItem fx:id="close" mnemonicParsing="false" onAction="#closeAction" text="Close" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+      <Label fx:id="name" layoutX="272.0" layoutY="49.0" text="Allure Rentals" textFill="#161717">
+         <font>
+            <Font size="35.0" />
+         </font></Label>
+      <Label fx:id="welcome" layoutX="200.0" layoutY="100.0" prefHeight="53.0" prefWidth="321.0" text="Easy Event Rentals" textFill="#cd0404">
+         <font>
+            <Font name="System Bold Italic" size="36.0" />
+         </font>
+      </Label>
+      <Label layoutX="116.0" layoutY="171.0" text="The Best Event Rental Company" textFill="#f21106">
+         <font>
+            <Font name="AR HERMANN" size="32.0" />
+         </font>
+      </Label>
+      <Label layoutX="220.0" layoutY="433.0" prefHeight="93.0" prefWidth="372.0" text="Want It, Rent It!!!" textFill="#e10b0b">
+         <font>
+            <Font name="AR DELANEY" size="44.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>
