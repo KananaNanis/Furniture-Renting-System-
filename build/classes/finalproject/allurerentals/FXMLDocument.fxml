@@ -55,5 +55,10 @@
             <Image url="@log.jpg" />
          </image>
       </ImageView>
+      <Button fx:id="backBtn" layoutX="579.0" layoutY="483.0" mnemonicParsing="false" onAction="#backAction" prefHeight="25.0" prefWidth="72.0" text="Back" textFill="#ff0606">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>

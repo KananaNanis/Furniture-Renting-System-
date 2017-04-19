@@ -51,3 +51,20 @@ Mukiri 4567893245 fgt Tables,Chairs,Tents 3,2,4 2017-03-27
 600
 200
 1400
+Lorna 1234567890 dfr t Tables,Chairr,Tents 4,5,6 2017-03-28
+800
+500
+2100
+Mueni 2345678901 sde Tables, Chairs,Tents 3,4,5 2017-04-03
+600
+1750
+Faith 2345678912 dfr Tables,Chairs,Tents 3,4,5 2017-04-29
+600
+400
+1750
+Betty 0987654321 dfrrt Tables,Chairs,Tents 3,4,5 2014-02-18
+600
+400
+1750
+dgfht 0987654321 cvg Tablee 4 2017-03-28
+800

@@ -287,8 +287,8 @@ public static List<String> items = new ArrayList<>();
 
         if (isNew == false) {
             try {
-                ConnectTheOperations addOpeartion=new ConnectTheOperations();
-                addOpeartion.updateRecord(name,num,addr,item,qua,date);
+                ConnectTheOperations updateOperation=new ConnectTheOperations();
+                updateOperation.updateRecord(name,num,addr,item,qua,date);
 //            java.sql.Connection conn = null;
 //            System.out.println("Connecting to the Database");
 //            try {

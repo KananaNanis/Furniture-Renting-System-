@@ -18,6 +18,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.Menu;
@@ -106,8 +107,11 @@ public class RegistrationPageController implements Initializable {
                     stage.setScene(scene);
                         
                     } else {
+                        Alert alert = new Alert(Alert.AlertType.ERROR);
+                   alert.setContentText("Password and Confirm password do not match");
+                  alert.showAndWait();
                       
-                    checkPassword.setText("Password and Confirm password do not match!!");
+                    //checkPassword.setText("Password and Confirm password do not match!!");
                     }
                 }else{
                         checkEmailReg.setText("The email is invalid");

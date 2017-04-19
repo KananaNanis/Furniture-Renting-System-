@@ -11,7 +11,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.Optional;
 import java.util.ResourceBundle;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
@@ -22,7 +21,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
-import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuItem;
@@ -30,6 +28,7 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 // http://www.maineventtent.com/event-rentals/tables-chairs/
 
@@ -64,6 +63,8 @@ public class FXMLDocumentController implements Initializable {
     private ImageView imagepre1;
     @FXML
     private ImageView imagepre2;
+    @FXML
+    private Button backBtn;
     
     private void handleButtonAction(ActionEvent event) {
         System.out.println("You clicked me!");
@@ -108,13 +109,17 @@ public class FXMLDocumentController implements Initializable {
                   
 
                 } else {
-//                    Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-//                   alert.setContentText("Login failure!!Please Register");
-//                   alert.showAndWait();
+                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+//                    alert.initModality(Modality.WINDOW_MODAL);
+//                    alert.setHeaderText("");
+                    alert.setContentText("Login failure!!Please Register");
+//                    alert.showAndWait();
+                   //alert.setContentText("Login failure!!Please Register");
+                  //alert.showAndWait();
 //                   
 //                   Alert alert = new Alert(Alert.AlertType.INFORMATION, "Login failure!!Please Register", ButtonType.OK);
 //                   alert.getDialogPane();//.setMinHeight(Region.USE_PREF_SIZE);
-//                   alert.show();
+                   alert.show();
 //                  Optional<ButtonType> result = alert.showAndWait();
 //            if (result.get() == ButtonType.OK){
 //                alert.close();
@@ -173,6 +178,18 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     private void exitAction(ActionEvent event) {
+    }
+
+    @FXML
+    private void backAction(ActionEvent event) {
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("StartPage.fxml"));
+            scene = new Scene(root);
+            Stage stage = (Stage) backBtn.getScene().getWindow();
+            stage.setScene(scene);
+        } catch (IOException e) {
+            System.err.println(e.toString());
+        }
     }
     
 }

@@ -102,11 +102,10 @@ public class RentalsController implements Initializable {
             System.out.println(e);
             System.exit(0);
         }
-        System.out.println("Connection established");
+        
         try {
             java.sql.Statement s = conn.createStatement();
             java.sql.ResultSet r = s.executeQuery("SELECT * FROM theClients");
-            System.out.println("TABLE SELECTED");
             while (r.next()) {
                 myList.add(new RentalsJavaClass(r.getString("cname"),r.getString("phoneNo")
                         ,r.getString("address"),r.getString("items"),r.getString("quantity"),r.getString("theDate")));
@@ -121,7 +120,7 @@ public class RentalsController implements Initializable {
                 dateCol.setCellValueFactory(cellData -> cellData.getValue().dateProperty());
                 
                 clientsTable.setItems(myList);
-                System.out.println("do sumn");
+               
 
             }
             
@@ -135,9 +134,7 @@ public class RentalsController implements Initializable {
             
             
             
-        }
-        System.out.println("COPIED TO TABLE");
-        
+        }        
         FilteredList<RentalsJavaClass> filteredData = new FilteredList<>(myList, p -> true);
         searchTxtField.textProperty().addListener((observable, oldValue, newValue) -> {
             filteredData.setPredicate(client -> {
@@ -212,76 +209,15 @@ private void showDetailStage(RentalsJavaClass selectedEmployee, boolean isNew,St
         boolean isNew = true;
         String CID = " ";
         addAction(selectedClient,isNew,CID);
-        //showDetailStage2(selectedClient, isNew);
-        //data.clear();
-//        try {
-//            Parent root = FXMLLoader.load(getClass().getResource("updateUser.fxml"));
-//            Scene scene = new Scene(root);
-//            Stage stage = (Stage) backBtn.getScene().getWindow();
-//            stage.setScene(scene);
-//        }
-//        catch(IOException e) {
-//            System.err.println(e.toString());
-//        }
+            }
 
-        //data.clear();
-//        try {
-//            Parent root = FXMLLoader.load(getClass().getResource("addFXML.fxml"));
-//            Scene scene = new Scene(root);
-//            Stage stage = (Stage) backBtn.getScene().getWindow();
-//            stage.setScene(scene);
-//        }
-//        catch(IOException e) {
-//            System.err.println(e.toString());
-//        }
-    }
-//        private void showDetailStage2(RentalsJavaClass selectedEmployee, boolean isNew) {
-//        
-//        if (detailStage == null) { //so as not to recreate if needed in future
-////open another window in modal stae
-//            FXMLLoader loader = new FXMLLoader();
-//            Parent detailPane = null;
-//            try {
-////note the path to the resource:
-////they are in the same package. not path specified.
-//                loader.setLocation(getClass().getResource("updateUser.fxml"));
-//                detailPane = loader.load();
-//            } catch (IOException ioe) {
-//                ioe.printStackTrace();
-//            }
-//            Scene scene = new Scene(detailPane);
-//            detailStage = new Stage();
-//            detailStage.setTitle("Employee Details");
-//            detailStage.initModality(Modality.APPLICATION_MODAL);
-//            detailStage.setScene(scene);
-////get the controller also:
-//            userInfoController = loader.getController();
-//            userInfoController.passHandleOnStage(detailStage); //to be able to close it.
-////
-//        }
-////pass data to the target controller
-///*
-//        if (isNew) {
-//            selectedEmployee = new Employee();
-//        }
-//        */
-//        userInfoController.showEmployeeDetail2(selectedEmployee, isNew);
-//        detailStage.showAndWait();
-//        /*
-//        if (isNew) {
-//            System.out.println("adding new Employee");
-//            userRecordsTable.getItems().add(selectedEmployee);
-//        }
-//       */
-//    
-//    }
 
     @FXML
     private void editAction(ActionEvent event) throws IOException {
         Stage prev = (Stage) backBtn.getScene().getWindow();
         prev.close();
         RentalsJavaClass selectedClient = null;
-        Boolean isNew = true;
+        Boolean isNew = false;
         String id;
         
         int selectedIndex = clientsTable.getSelectionModel().getSelectedIndex();
