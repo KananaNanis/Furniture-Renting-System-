@@ -5,10 +5,12 @@
  */
 package finalproject.allurerentals;
 
+import DatabaseModel.ConnectTheOperations;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.Optional;
 import java.util.ResourceBundle;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
@@ -24,6 +26,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -160,8 +163,12 @@ public class RentalsController implements Initializable {
     } 
     
     
-private void showDetailStage(RentalsJavaClass selectedEmployee, boolean isNew,String id) {
-        
+private void showDetailStage(RentalsJavaClass selectedEmployee, boolean isNew,String id) throws IOException {
+        //Stage prev = (Stage) backBtn.getScene().getWindow();
+        //prev.close();
+        // FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("FXMLDocument.fxml"));
+            //Parent root1 = (Parent) fxmlLoader.load();
+            //Stage stage = new Stage();
         if (detailStage == null) { //so as not to recreate if needed in future
 
             FXMLLoader loader = new FXMLLoader();
@@ -199,7 +206,8 @@ private void showDetailStage(RentalsJavaClass selectedEmployee, boolean isNew,St
     
     @FXML
     private void addAction(ActionEvent event) throws IOException {      
-        
+        Stage prev = (Stage) backBtn.getScene().getWindow();
+        prev.close();
         RentalsJavaClass selectedClient = null;
         boolean isNew = true;
         String CID = " ";
@@ -270,6 +278,8 @@ private void showDetailStage(RentalsJavaClass selectedEmployee, boolean isNew,St
 
     @FXML
     private void editAction(ActionEvent event) throws IOException {
+        Stage prev = (Stage) backBtn.getScene().getWindow();
+        prev.close();
         RentalsJavaClass selectedClient = null;
         Boolean isNew = true;
         String id;
@@ -286,7 +296,7 @@ private void showDetailStage(RentalsJavaClass selectedEmployee, boolean isNew,St
         
     }
     
-    private void addAction(RentalsJavaClass selectedClient, Boolean isNew, String id){
+    private void addAction(RentalsJavaClass selectedClient, Boolean isNew, String id) throws IOException{
         showDetailStage(selectedClient,isNew,id);
 //        try {
 //            Parent root = FXMLLoader.load(getClass().getResource("Rentals.fxml"));
@@ -327,42 +337,42 @@ private void showDetailStage(RentalsJavaClass selectedEmployee, boolean isNew,St
 //    }
 
     @FXML
-    private void deleteAction(ActionEvent event) {
+    private void deleteAction(ActionEvent event) throws SQLException, ClassNotFoundException, InstantiationException, IllegalAccessException {
       
-      RentalsJavaClass selectedClient = null;
-        int selectedIndex = clientsTable.getSelectionModel().getSelectedIndex();
+      int selectedIndex = clientsTable.getSelectionModel().getSelectedIndex();
         if (selectedIndex >= 0) {
-            selectedClient = clientsTable.getItems().get(selectedIndex);
-            //add additional confirmation before deletion
-            
-            deleteRecord(selectedClient.getName());
-            clientsTable.getItems().remove(selectedIndex);
-        }  
+            System.out.println(selectedIndex);
+
+                ConnectTheOperations delOp=new ConnectTheOperations();
+                delOp.deleteRecord(selectedIndex);
+                clientsTable.getItems().remove(selectedIndex);
+
+        } 
         
     }
     
-        public void deleteRecord(String cname){
-        java.sql.Connection conn = null;
-        //System.out.println("Connecting to the Database");
-        try {
-            Class.forName("com.mysql.jdbc.Driver").newInstance();
-            conn = java.sql.DriverManager.getConnection(
-                    "jdbc:mysql://localhost:3300/allureRentals?user=root&password=nash@15492");
-        }
-        catch (ClassNotFoundException | IllegalAccessException | InstantiationException | SQLException e) {
-            System.err.println(e);
-            System.exit(0);
-        }
-        try{
-            PreparedStatement p;
-            p = conn.prepareStatement("Delete from theClients where cname=?");
-            p.setString(1, cname);
-            p.execute(); //use execute if no results expected back
-            }catch(SQLException e){
-                System.err.println("Error "+e.toString());
-                //return;
-            }
-    }   
+//        public void deleteRecord(String id){
+//        java.sql.Connection conn = null;
+//        //System.out.println("Connecting to the Database");
+//        try {
+//            Class.forName("com.mysql.jdbc.Driver").newInstance();
+//            conn = java.sql.DriverManager.getConnection(
+//                    "jdbc:mysql://localhost:3300/allureRentals?user=root&password=nash@15492");
+//        }
+//        catch (ClassNotFoundException | IllegalAccessException | InstantiationException | SQLException e) {
+//            System.err.println(e);
+//            System.exit(0);
+//        }
+//        try{
+//            PreparedStatement p;
+//            p = conn.prepareStatement("Delete from theClients where c_id=?");
+//            p.setString(1, id);
+//            p.execute(); //use execute if no results expected back
+//            }catch(SQLException e){
+//                System.err.println("Error "+e.toString());
+//                //return;
+//            }
+//    }   
     
 
 

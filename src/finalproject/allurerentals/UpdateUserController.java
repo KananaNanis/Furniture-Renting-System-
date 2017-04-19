@@ -5,6 +5,7 @@
  */
 package finalproject.allurerentals;
 
+import DatabaseModel.ConnectTheOperations;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
@@ -21,6 +22,8 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -97,26 +100,35 @@ public static List<String> items = new ArrayList<>();
     }
 
     @FXML
-    private void saveAction(ActionEvent event) throws IOException {
+    private void saveAction(ActionEvent event) throws IOException, FileNotFoundException, SQLException, ClassNotFoundException {
         String checkNum=editNum.getText();
         if(checkNum.length()<10||checkNum.length()>10){
             checkNumLen.setText("Phone Number should be 10 digits");
             
         }else{
        if (isNew == true) {
-            theSaveAction();
                         try {
-            Parent root = FXMLLoader.load(getClass().getResource("Rentals.fxml"));
-            Scene scene = new Scene(root);
-            Stage stage = (Stage) backBtn.getScene().getWindow();
-            stage.setScene(scene);
-        }
-        catch(IOException e) {
-            System.err.println(e.toString());
-        }
+                            theSaveAction();
+                            try {
+                                Parent root = FXMLLoader.load(getClass().getResource("Rentals.fxml"));
+                                Scene scene = new Scene(root);
+                                Stage stage = (Stage) backBtn.getScene().getWindow();
+                                stage.setScene(scene);
+                            }
+                            catch(IOException e) {
+                                System.err.println(e.toString());
+                            }
+                            
+                        }
+        catch(InstantiationException ex) {
+               Logger.getLogger(UpdateUserController.class.getName()).log(Level.SEVERE, null, ex);
+        }  catch (IllegalAccessException ex) {
+               Logger.getLogger(UpdateUserController.class.getName()).log(Level.SEVERE, null, ex);
+           }
             
         } else {
             updateAction(theID);
+            //editName.setText(editName.getText());
             try {
             Parent root = FXMLLoader.load(getClass().getResource("Rentals.fxml"));
             Scene scene = new Scene(root);
@@ -130,7 +142,7 @@ public static List<String> items = new ArrayList<>();
         }
     }
 
-    private RentalsJavaClass theSaveAction() throws FileNotFoundException, IOException {
+    private RentalsJavaClass theSaveAction() throws FileNotFoundException, IOException, SQLException, ClassNotFoundException, InstantiationException, IllegalAccessException {
         LocalDate dt = editDate.getValue();
         String name = editName.getText();
         String num = editNum.getText();
@@ -145,41 +157,44 @@ public static List<String> items = new ArrayList<>();
         items.add(name + " " + num + " " + addr + " " + item+" "+qua+" "+date); 
    
         if (isNew==true) {
-            java.sql.Connection conn = null;
-            System.out.println("Connecting to the Database");
-            try {
-                Class.forName("com.mysql.jdbc.Driver").newInstance();
-                conn = java.sql.DriverManager.getConnection(
-                        "jdbc:mysql://localhost:3300/allureRentals?user=root&password=nash@15492");
-            } catch (Exception e) {
-                System.err.println(e);
-                System.exit(0);
-            }
-            try {
-                PreparedStatement p;
-                
-                p = conn.prepareStatement("Insert Into theClients set"
-                        + " cname=?, phoneNo=?,"
-                        + " address=?, items =? "
-                        + ",quantity =? ,theDate =?"
-                );
-                //p2 = conn.prepareStatement("delete from Clients where cname=? and phoneNo =?");
-                p.setString(1, name);
-                p.setString(2, num);
-                p.setString(3, addr);
-                p.setString(4, item);
-                p.setString(5, qua);
-                p.setString(6, date);
-                //p.setInt(7, _clientID);
-                p.execute(); //use execute if no results expected back
+            ConnectTheOperations addOpeartion=new ConnectTheOperations();
+                addOpeartion.addClient(name,num,addr,item,qua,date);
+//            java.sql.Connection conn = null;
+//            System.out.println("Connecting to the Database");
+//            try {
+//                Class.forName("com.mysql.jdbc.Driver").newInstance();
+//                conn = java.sql.DriverManager.getConnection(
+//                        "jdbc:mysql://localhost:3300/allureRentals?user=root&password=nash@15492");
+//            } catch (Exception e) {
+//                System.err.println(e);
+//                System.exit(0);
+//            }
+//            try {
+//                PreparedStatement p;
+//                
+//                p = conn.prepareStatement("Insert Into theClients set"
+//                        + " cname=?, phoneNo=?,"
+//                        + " address=?, items =? "
+//                        + ",quantity =? ,theDate =?"
+//                );
+//                //p2 = conn.prepareStatement("delete from Clients where cname=? and phoneNo =?");
+//                p.setString(1, name);
+//                p.setString(2, num);
+//                p.setString(3, addr);
+//                p.setString(4, item);
+//                p.setString(5, qua);
+//                p.setString(6, date);
+//                //p.setInt(7, _clientID);
+//                p.execute(); //use execute if no results expected back
                 writeToFile(items, "cost.txt",cost);
-            } catch (SQLException e) {
-                System.err.println("Error " + e.toString());
-            }
-
+//            } catch (SQLException e) {
+//                System.err.println("Error " + e.toString());
+//            }
+//
         }
         return updateRecords;
     }
+    
     
     private String writeToFile(java.util.List list, String path,String myCost) {
         String strI = null;
@@ -259,6 +274,7 @@ public static List<String> items = new ArrayList<>();
     
     private RentalsJavaClass updateAction(String clientId) {
         LocalDate dt = editDate.getValue();
+       //int id=0;
         String name = editName.getText();
         String num = editNum.getText();
         String addr = editAddress.getText();
@@ -270,34 +286,46 @@ public static List<String> items = new ArrayList<>();
                  dt.toString());
 
         if (isNew == false) {
-            java.sql.Connection conn = null;
-            System.out.println("Connecting to the Database");
             try {
-                Class.forName("com.mysql.jdbc.Driver").newInstance();
-                conn = java.sql.DriverManager.getConnection(
-                        "jdbc:mysql://localhost:3300/allureRentals?user=root&password=nash@15492");
-            } catch (Exception e) {
-                System.err.println(e);
-                System.exit(0);
-            }
-
-            try {
-                PreparedStatement p;
-                
-                p = conn.prepareStatement("update theClients set"
-                        + " cname=?, phoneNo=?,"
-                        + " address=?, items =? "
-                        + ",quantity =? ,theDate =?");
-                p.setString(1, name);
-                p.setString(2, num);
-                p.setString(3, addr);
-                p.setString(4, item);
-                p.setString(5, qua);
-                p.setString(6, date);
-               // p.setInt(7, _clientID);
-                p.execute(); //use execute if no results expected back
-            } catch (SQLException e) {
-                System.err.println("Error " + e.toString());
+                ConnectTheOperations addOpeartion=new ConnectTheOperations();
+                addOpeartion.updateRecord(name,num,addr,item,qua,date);
+//            java.sql.Connection conn = null;
+//            System.out.println("Connecting to the Database");
+//            try {
+//                Class.forName("com.mysql.jdbc.Driver").newInstance();
+//                conn = java.sql.DriverManager.getConnection(
+//                        "jdbc:mysql://localhost:3300/allureRentals?user=root&password=nash@15492");
+//            } catch (Exception e) {
+//                System.err.println(e);
+//                System.exit(0);
+//            }
+//
+//            try {
+//                PreparedStatement p;
+//                
+//                p = conn.prepareStatement("update theClients set"
+//                        + " cname=?, phoneNo=?,"
+//                        + " address=?, items =? "
+//                        + ",quantity =? ,theDate =?");
+//                p.setString(1, name);
+//                p.setString(2, num);
+//                p.setString(3, addr);
+//                p.setString(4, item);
+//                p.setString(5, qua);
+//                p.setString(6, date);
+//               // p.setInt(7, _clientID);
+//                p.execute(); //use execute if no results expected back
+//            } catch (SQLException e) {
+//                System.err.println("Error " + e.toString());
+//            }
+            } catch (SQLException ex) {
+                Logger.getLogger(UpdateUserController.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(UpdateUserController.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (InstantiationException ex) {
+                Logger.getLogger(UpdateUserController.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (IllegalAccessException ex) {
+                Logger.getLogger(UpdateUserController.class.getName()).log(Level.SEVERE, null, ex);
             }
 
         }
