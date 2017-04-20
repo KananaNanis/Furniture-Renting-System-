@@ -5,12 +5,16 @@
  */
 package finalproject.allurerentals;
 
+import DatabaseModel.ConnectTheOperations;
+import static finalproject.allurerentals.UpdateUserController.items;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -32,6 +36,8 @@ public class AddFXMLController implements Initializable {
     private Stage thisStage;
     private boolean isNew;
     private RentalsJavaClass localClient;
+    private boolean newClient;
+    private int theID;
    
     Scene scene;
     @FXML
@@ -75,60 +81,63 @@ public class AddFXMLController implements Initializable {
     } 
     
     @FXML
-    //private void addRecordAction(ActionEvent event) {
-//         if(isNew==true)
-//            addAction();
-//        else
-//            //updateAction(myClientID);
-//        
-//        thisStage.close();
-    //}
+    private void addRecordAction(ActionEvent event) {
+         //if(isNew==true)
+            addRecordAction2();
+            try {
+                                Parent root = FXMLLoader.load(getClass().getResource("Rentals.fxml"));
+                                Scene scene = new Scene(root);
+                                Stage stage = (Stage) backBtnAdd.getScene().getWindow();
+                                stage.setScene(scene);
+                            }
+                            catch(IOException e) {
+                                System.err.println(e.toString());
+                            }
+
+        //else
+            //updateAction(myClientID);
+        
+        //thisStage.close();
+    }
     
 
-    private RentalsJavaClass addRecordAction(ActionEvent event) {
-        
+    private RentalsJavaClass addRecordAction2() {
+                    
         try {
-            Class.forName("com.mysql.jdbc.Driver").newInstance();
-            conn = java.sql.DriverManager.getConnection(
-                    "jdbc:mysql://localhost:3300/allureRentals?user=root&password=nash@15492");
-        }
-        catch (Exception e) {
-            System.err.println(e);
-            System.exit(0);
-        }
-        
-        LocalDate dt = addDate.getValue();
-        String name=addName.getText();
-        String num=addPNum.getText();
-        String addr= addAddress.getText();
-        String item= addItems.getText();
-        String qua=addQuantity.getText();
-        String date=dt.toString();
-        localClient = new RentalsJavaClass(addName.getText(),addPNum.getText()
-                ,addAddress.getText(),addItems.getText(),addQuantity.getText(),dt.toString());
-
-        if (isNew) {
-                  try {
-                PreparedStatement p;
-                p = conn.prepareStatement("Insert Into theClients set"
-                        + " cname=?, phoneNo=?,"
-                        + " address=?, items =? "
-                        + ",quantity =? ,theDate =?"
-                        );
-                p.setString(1, name);
-                p.setString(2, num);
-                p.setString(3, addr);
-                p.setString(4, item);
-                p.setString(5, qua);
-                p.setString(6, date);
-                //p.setInt(7, _clientID);
-                p.execute(); //use execute if no results expected back
-            } catch (SQLException e) {
-                System.err.println("Error " + e.toString());
-            }
-
+            LocalDate dt = addDate.getValue();
+            String name=addName.getText();
+            String num=addPNum.getText();
+            String addr= addAddress.getText();
+            String item= addItems.getText();
+            String qua=addQuantity.getText();
+            String date=dt.toString();
+            localClient = new RentalsJavaClass(addName.getText(),addPNum.getText()
+                    ,addAddress.getText(),addItems.getText(),addQuantity.getText(),dt.toString());
+            
+            
+            // items.add(name + " " + num + " " + addr + " " + item+" "+qua+" "+date);
+            
+            //if (newClient==true) {
+            ConnectTheOperations addOpeartion=new ConnectTheOperations();
+            addOpeartion.addClient(name,num,addr,item,qua,date);
+            
+            //writeToFile(items, "cost.txt",cost);
+            
+            //}
+            //}
+            
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(AddFXMLController.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(AddFXMLController.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            Logger.getLogger(AddFXMLController.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            Logger.getLogger(AddFXMLController.class.getName()).log(Level.SEVERE, null, ex);
         }
         return localClient;
+
     }
     
     public void passHandleOnStage(Stage s) {
@@ -136,55 +145,9 @@ public class AddFXMLController implements Initializable {
         //btnClose.getScene().setWindow(s);						
     }
     
-    public void showEmployeeDetail(RentalsJavaClass c, boolean isNew) {
-        this.localClient = c;
-        this.isNew = isNew;
-        //this.myClientID = myCID;
-        
-        LocalDate dt = addDate.getValue();
-        //dt.toString();
-        if (c != null) {
-            addName.setText(c.getName());
-            addPNum.setText(c.getpNum());
-            addAddress.setText(c.getAddress());
-            addItems.setText(c.getItems());
-            addQuantity.setText(c.getQuantity());
-            //dt.set(c.getDate());
-            //addDate.setText(c.getDate());
-        } else {
-            addName.setText("");
-            addPNum.setText("");
-            addAddress.setText("");
-            addItems.setText("");
-            addQuantity.setText("");
-            //addDate.setText("");
-        }
-    }
+   
     
-    public void showEmployeeDetail2(RentalsJavaClass c, boolean isNew, String myCID) {
-        this.localClient = c;
-        this.isNew = isNew;
-        //this.myClientID = myCID;
-        
-        LocalDate dt = addDate.getValue();
-        //dt.toString();
-        if (c != null) {
-            addName.setText(c.getName());
-            addPNum.setText(c.getpNum());
-            addAddress.setText(c.getAddress());
-            addItems.setText(c.getItems());
-            addQuantity.setText(c.getQuantity());
-            //dt.set(c.getDate());
-            //addDate.setText(c.getDate());
-        } else {
-            addName.setText("");
-            addPNum.setText("");
-            addAddress.setText("");
-            addItems.setText("");
-            addQuantity.setText("");
-            //addDate.setText("");
-        }
-    }
+    
     
     
 //        public void showEmployeeDetail(RentalsJavaClass e,boolean isNew) {
@@ -201,6 +164,29 @@ public class AddFXMLController implements Initializable {
 //        }
 //    }
 
+     public void displayClient2(RentalsJavaClass client,int id) {
+        this.localClient = client;
+        //this.newClient = newClient;
+        this.theID = id;
+
+        //LocalDate dt = editDate.getValue();
+        //dt.toString();
+        if (client != null) {
+            addName.setText(client.getName());
+            addPNum.setText(client.getpNum());
+            addAddress.setText(client.getAddress());
+            addItems.setText(client.getItems());
+            addQuantity.setText(client.getQuantity());
+            //dt.set(e.getDate());
+        } else {
+            addName.setText("");
+            addPNum.setText("");
+            addAddress.setText("");
+            addItems.setText("");
+            addQuantity.setText("");
+            //editDate.setText("");
+        }
+    }
     @FXML
     private void backAction(ActionEvent event) {
         try {

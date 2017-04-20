@@ -127,9 +127,10 @@ public static List<String> items = new ArrayList<>();
                Logger.getLogger(UpdateUserController.class.getName()).log(Level.SEVERE, null, ex);
         }  catch (IllegalAccessException ex) {
                Logger.getLogger(UpdateUserController.class.getName()).log(Level.SEVERE, null, ex);
-           }
+          }
+       }
             
-        } else {
+         else if(newClient == false) {
             updateClient(theID);
             try {
             Parent root = FXMLLoader.load(getClass().getResource("Rentals.fxml"));
@@ -140,9 +141,12 @@ public static List<String> items = new ArrayList<>();
         catch(IOException e) {
             System.err.println(e.toString());
         }
+                 
        }
         }
     }
+        
+
 
     /**
      * gets the the details of the added client 
@@ -238,8 +242,10 @@ public static List<String> items = new ArrayList<>();
                
             
             }
-            
+            out.write("Name"+" "+"Phone"+" "+"Address"+" "+"Items"+" "+"Quantity"+" "+"Date");
+            out.newLine();
                     for (Object s : list) {
+                        
                             out.write((String) s);
                             out.newLine();
 
@@ -269,6 +275,10 @@ public static List<String> items = new ArrayList<>();
         updateRecords = new RentalsJavaClass(editName.getText(), editNum.getText(),
                  editAddress.getText(), editItems.getText(), editQuantity.getText(),
                  dt.toString());
+        
+        items.add(name + " " + num + " " + addr + " " + item+" "+qua+" "+date); 
+        
+        writeToFile(items, "cost.txt",cost);
 
        /// if (newClient == false) {
             try {
@@ -295,7 +305,7 @@ public static List<String> items = new ArrayList<>();
      * @param newClient
      * @param id 
      */
-    public void displayClient(RentalsJavaClass client, boolean newClient, int id) {
+    public void displayClient(RentalsJavaClass client,Boolean newClient,int id) {
         this.updateRecords = client;
         this.newClient = newClient;
         this.theID = id;

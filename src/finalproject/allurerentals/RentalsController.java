@@ -48,6 +48,7 @@ public class RentalsController implements Initializable {
     
      
     private UpdateUserController connectController = null;
+     private AddFXMLController addController= null;
     
     
     @FXML
@@ -138,7 +139,7 @@ public class RentalsController implements Initializable {
                 myList.add(new RentalsJavaClass(r.getString("c_id"),r.getString("cname"),r.getString("phoneNo")
                         ,r.getString("address"),r.getString("items"),r.getString("quantity"),r.getString("theDate")));
                 
-                System.out.println("TABLE again");
+                
                 nameCol.setCellValueFactory(cellData -> cellData.getValue().nameProperty());
                  pnumberCol.setCellValueFactory(cellData -> cellData.getValue().pNumProperty());
                 addressCol.setCellValueFactory(cellData -> cellData.getValue().addressProperty());
@@ -162,13 +163,14 @@ public class RentalsController implements Initializable {
     
     /**
      * gets the details of the selected client for editing
-     * @param theClient   
+     * @param theClient 
+     * @param newClient
      * @param id 
      * @throws IOException
      */
-    private void detailsDisplay(RentalsJavaClass theClient, boolean newClient,int id) throws IOException {
+    private void detailsDisplay(RentalsJavaClass theClient,Boolean newClient,int id) throws IOException {
         
-        if (detailStage == null) { 
+        //if (detailStage == null) { 
 
             FXMLLoader loader = new FXMLLoader();
             Parent detailPane = null;
@@ -189,19 +191,13 @@ public class RentalsController implements Initializable {
             connectController.passHandleOnStage(detailStage);
 //
 
-        connectController.displayClient(theClient, newClient,id);
+        connectController.displayClient(theClient,newClient,id);
         detailStage.showAndWait();
         
+    //}
     }
-    
-    
-    /**
-     * show the details of the client
-     * @param selectedClient is an employee
-     * @param newClient is a boolean
-     */
-    
-}
+              
+
     
     @FXML
     /**
@@ -227,14 +223,14 @@ public class RentalsController implements Initializable {
         Stage prev = (Stage) backBtn.getScene().getWindow();
         prev.close();
         RentalsJavaClass selectedClient = null;
-        Boolean newClient = false;
+        Boolean newClient = true;
         int id;
         
         int selectedIndex = clientsTable.getSelectionModel().getSelectedIndex();
         if (selectedIndex >= 0) {
             selectedClient = clientsTable.getItems().get(selectedIndex);
             id =Integer.parseInt(selectedClient.getGetClientID());
-            addClient(selectedClient,false,id);
+            addClient(selectedClient,newClient,id);
             //clientsTable.getItems().remove(selectedIndex);
         }
         
@@ -247,18 +243,18 @@ public class RentalsController implements Initializable {
      * @param newClient
      * @throws IOexception
      */
-    private void addClient(RentalsJavaClass selectedClient, Boolean newClient, int id) throws IOException{
+    private void addClient(RentalsJavaClass selectedClient,Boolean newClient, int id) throws IOException{
         detailsDisplay(selectedClient,newClient,id);
         
-        try {
-            Parent root = FXMLLoader.load(getClass().getResource("Rentals.fxml"));
-            scene = new Scene(root);
-            Stage stage = (Stage) backBtn.getScene().getWindow();
-            stage.setScene(scene);
-        }
-        catch(IOException e) {
-            System.err.println(e.toString());
-        }
+//        try {
+//            Parent root = FXMLLoader.load(getClass().getResource("Rentals.fxml"));
+//            scene = new Scene(root);
+//            Stage stage = (Stage) backBtn.getScene().getWindow();
+//            stage.setScene(scene);
+//        }
+//        catch(IOException e) {
+//            System.err.println(e.toString());
+//        }
 
     }
     
@@ -291,31 +287,6 @@ public class RentalsController implements Initializable {
         readFromDb();
     }
     
-//        public void deleteRecord(String id){
-//        java.sql.Connection conn = null;
-//        //System.out.println("Connecting to the Database");
-//        try {
-//            Class.forName("com.mysql.jdbc.Driver").newInstance();
-//            conn = java.sql.DriverManager.getConnection(
-//                    "jdbc:mysql://localhost:3300/allureRentals?user=root&password=nash@15492");
-//        }
-//        catch (ClassNotFoundException | IllegalAccessException | InstantiationException | SQLException e) {
-//            System.err.println(e);
-//            System.exit(0);
-//        }
-//        try{
-//            PreparedStatement p;
-//            p = conn.prepareStatement("Delete from theClients where c_id=?");
-//            p.setString(1, id);
-//            p.execute(); //use execute if no results expected back
-//            }catch(SQLException e){
-//                System.err.println("Error "+e.toString());
-//                //return;
-//            }
-//    }   
-    
-
-
     @FXML
     /**
      * loads the log in page 

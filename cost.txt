@@ -1,132 +1,23 @@
-Sharon 0756342356 Maua 120 Tables,Chairs,Tents6,40,32016-06-280
-Violet 0711968785 Njia 225 Tents, Tables, Chairs 2,4,45 2017-04-03 0
-Betty 0708896787 Chuka 24 Tables,Chairs,Tents 5,50,5 2017-03-26 0
-Leo 6578309273 Desr 45 Chairs,Tables,Tents 4,5,6 2017-04-23 null
+hjkl 1234567890 jk Table 5 2017-03-28
 1000
-800
-1200
-Hazel 0987645231 frty 78 Chairs,Tables,Tents 45,6,7 2017-03-27 null
-600
-9000
-2450
-Antony 0702985667 Kisumu 234 Tables, Chairs, Tents 4,56,6 2016-03-09
-800
-Antony 0702985667 Kisumu 234 Tables, Chairs, Tents 4,56,6 2016-03-09
-800
-Sasha 7823456789 Kenya 45 Chairs,Tables,Tents 4,2,4 2017-05-06
-200
-800
-1400
-Malia 2348931678 Amer 34 Tables,Chairs,Tents 3,4,6 2017-04-30
-600
-400
-2100
-Betty 0987654321 Karen 56 Tables,Chairs,Tents 4,6,7 2017-03-28
-800
-600
-2450
-Nanis 1234567890 sdrty Tables, Chairs, Tents 3,5,7 2017-03-27
-600
-Kanana 0987643214 dfr Tables,Chairs,Tents 3,4,5 2017-03-27
-600
-400
-1750
-Kanana 0987643214 dfr Tables,Chairs,Tents 3,4,5 2017-03-27
-600
-400
-1750
-Leah 1234567890 jut Tables,Chairs,Tents 3,4,5 2017-04-13
-600
-400
-1750
-Kanana 0987643214 dfr Tables,Chairs,Tents 3,4,5 2017-03-27
-600
-400
-1750
-Leah 1234567890 jut Tables,Chairs,Tents 3,4,5 2017-04-13
-600
-400
-1750
-Mukiri 4567893245 fgt Tables,Chairs,Tents 3,2,4 2017-03-27
-600
-200
-1400
-Lorna 1234567890 dfr t Tables,Chairr,Tents 4,5,6 2017-03-28
-800
-500
-2100
-Mueni 2345678901 sde Tables, Chairs,Tents 3,4,5 2017-04-03
-600
-1750
-Faith 2345678912 dfr Tables,Chairs,Tents 3,4,5 2017-04-29
-600
-400
-1750
-Betty 0987654321 dfrrt Tables,Chairs,Tents 3,4,5 2014-02-18
-600
-400
-1750
-dgfht 0987654321 cvg Tablee 4 2017-03-28
-800
-Mutharimi 1234567890 dfgt Tables,Chairs 2,3 2017-03-27
-400
-300
-weret 3457687980 werrty Tables,Chairs,Tents 2,3,4 2017-03-27
-400
-300
-1400
-qweweyr 7654321890 dfghj Tables,Chairs,Tents 3,4,5 2016-06-28
-600
-400
-1750
-hytt 1234567890 ertyu Tables,Chairs,Tents 2,5,7 2017-04-04
-400
-500
-2450
-werty asdfertyrh 56tyh Tables,Chairs,Tents 4,5,7 2017-04-18
-800
-500
-2450
-sdfghjk 1234567890 fgt Tables 3 2017-04-05
-600
-Kanana 1234567890 dfgt Tables,Chairs,Tents 4,5,6 2017-03-27
-800
-500
-2100
-dfghjk 1234567890 jk Tables,Chairs,Tents 3,4,5 2017-04-17
-600
-400
-1750
-dfgrte 0987654322 ety Tables,Chairs,Tents 3,6,7 2017-03-20
-600
-600
-2450
-ertyui 0987654321 fghtjy Tables,Chairs,Tents 4,5,6 2017-04-10
-800
-500
-2100
-dfghj 9876543219 frt Tabls,Chairs,Tents 4,5,6 2017-04-03
-800
-500
-2100
-ertyui 9876543219 fghy Tables,Chairs,Tents 4,5,7 2017-04-05
-800
-500
-2450
-hj 7885469874 fghj Tables,Chairs,Tents 4,5,6 2017-04-11
-800
-500
-2100
-iuo 4567890659 sdr Tables,Chairs,Tents 4,5,7 2017-03-28
-800
-500
-2450
-ertyuio 3456784566 tyuio Tables,Chairs,Tents 3,5,6 2017-03-27
+Name Phone Address Items Quantity Datefghjk 4567890238 dfr Tables,Chairs,Tents 3,5,6 2017-03-29
 600
 500
 2100
-Nanis 0560223073 dfghj Tables,Chairs,Tents 3,4,7 2017-04-03
-600
-400
-2450
-234567 0987654321 dfghj wertyui 3,4,5 2017-03-28
+Name Phone Address Items Quantity Date
+ertyuio 1234567890 hjuik Tables,Chairs,Tents 4,8,9 2017-04-05
+800
+800
+3150
+Name Phone Address Items Quantity Date
+hjkl 0987654321 dfght Tables,Tents 8,9 2017-03-28
+1600
+hjkl 0987654321 dfght Tables,Chairs,tents 8,9,5 2017-03-28
+1600
+900
+1750
+Name Phone Address Items Quantity Date
+ertyui 1234567890 hjuik Tables,Chairs,Tents 4,8,9 2017-04-10
+800
+800
+3150
