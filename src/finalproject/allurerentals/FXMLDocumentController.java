@@ -109,17 +109,17 @@ public class FXMLDocumentController implements Initializable {
                   
 
                 } else {
-                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                    //Alert alert = new Alert(Alert.AlertType.INFORMATION);
 //                    alert.initModality(Modality.WINDOW_MODAL);
 //                    alert.setHeaderText("");
-                    alert.setContentText("Login failure!!Please Register");
+                    //alert.setContentText("Login failure!!Please Register");
 //                    alert.showAndWait();
                    //alert.setContentText("Login failure!!Please Register");
                   //alert.showAndWait();
 //                   
 //                   Alert alert = new Alert(Alert.AlertType.INFORMATION, "Login failure!!Please Register", ButtonType.OK);
 //                   alert.getDialogPane();//.setMinHeight(Region.USE_PREF_SIZE);
-                   alert.show();
+                   //alert.show();
 //                  Optional<ButtonType> result = alert.showAndWait();
 //            if (result.get() == ButtonType.OK){
 //                alert.close();

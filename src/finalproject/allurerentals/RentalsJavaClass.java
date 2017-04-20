@@ -17,7 +17,7 @@ import javafx.beans.property.StringProperty;
  */
 public class RentalsJavaClass {
 
-    private final StringProperty getClientID= new SimpleStringProperty();
+    private final StringProperty getClientID;
 
     public String getGetClientID() {
         return getClientID.get();
@@ -31,7 +31,7 @@ public class RentalsJavaClass {
         return getClientID;
     }
 
-    private final StringProperty pNum = new SimpleStringProperty();
+    private final StringProperty pNum;
 
     public String getpNum() {
         return pNum.get();
@@ -45,7 +45,7 @@ public class RentalsJavaClass {
         return pNum;
     }
 
-    private final StringProperty address= new SimpleStringProperty();
+    private final StringProperty address;
 
     public String getAddress() {
         return address.get();
@@ -67,7 +67,7 @@ public class RentalsJavaClass {
     return getName()+" "+getAddress()+ " " +getpNum()+ " "+getItems()+ " "+getQuantity()+ " "+getDate()+" "+getGetClientID();
     }
 
-    private final StringProperty date= new SimpleStringProperty();
+    private final StringProperty date;
 
     public String getDate() {
         return date.get();
@@ -81,7 +81,7 @@ public class RentalsJavaClass {
         return date;
     }
 
-    private final StringProperty quantity= new SimpleStringProperty();
+    private final StringProperty quantity;
 
     public String getQuantity() {
         return quantity.get();
@@ -95,7 +95,7 @@ public class RentalsJavaClass {
         return quantity;
     }
 
-    private final StringProperty items = new SimpleStringProperty();
+    private final StringProperty items;
 
     public String getItems() {
         return items.get();
@@ -113,7 +113,7 @@ public class RentalsJavaClass {
 
     
 
-    private final StringProperty name = new SimpleStringProperty();
+    private final StringProperty name;
 
     public String getName() {
         return name.get();
@@ -130,38 +130,25 @@ public class RentalsJavaClass {
         this(null,null,null,null,null,null);
     }
     public RentalsJavaClass(String id,String nm, String phoneN, String add, String item, String quant, String dt) {
-//    this.name = new SimpleStringProperty(name);
-//    this.pNum= new SimpleStringProperty(phoneN);
-//    this.address= new SimpleStringProperty(add);
-//    this.items= new SimpleStringProperty(item);
-//    this.quantity= new SimpleStringProperty(quantity);
-//    this.date= new SimpleStringProperty(date);
-//    this.getClientID= new SimpleStringProperty(id);
-        getClientID.set(id);
-        name.set(nm);
-        pNum.set(phoneN);
-        address.set(add);
-        items.set(item);
-        quantity.set(quant);
-        date.set(dt);
+        this.name = new SimpleStringProperty(nm);
+        this.items = new SimpleStringProperty(item);
+        this.quantity = new SimpleStringProperty(quant);
+        this.date = new SimpleStringProperty(dt);
+        this.address = new SimpleStringProperty(add);
+        this.pNum = new SimpleStringProperty(phoneN);
+        this.getClientID = new SimpleStringProperty(id);
         
     
     }
     
      public RentalsJavaClass(String nm, String phoneN, String add, String item, String quant, String dt) {
-    //this.name = new SimpleStringProperty(nm);
-    //this.pNum= new SimpleStringProperty(phoneN);
-    //this.address= new SimpleStringProperty(add);
-    //this.items= new SimpleStringProperty(item);
-   //this.quantity= new SimpleStringProperty(quant);
-    //this.date= new SimpleStringProperty(dt);
-    //this.getClientID= new SimpleStringProperty(id);
-        name.set(nm);
-        pNum.set(phoneN);
-        address.set(add);
-        items.set(item);
-        quantity.set(quant);
-        date.set(dt);
+        this.name = new SimpleStringProperty();
+        this.items = new SimpleStringProperty();
+        this.quantity = new SimpleStringProperty();
+        this.date = new SimpleStringProperty();
+        this.address = new SimpleStringProperty();
+        this.pNum = new SimpleStringProperty();
+        this.getClientID = new SimpleStringProperty();
     
     }
     

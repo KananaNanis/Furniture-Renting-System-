@@ -66,7 +66,7 @@ public static List<String> items = new ArrayList<>();
     private RentalsJavaClass updateRecords;
     private boolean isNew;
     //private RentalsController userRecords = null;
-    private String theID;
+    private int theID;
 
     /**
      * Initializes the controller class.
@@ -272,7 +272,7 @@ public static List<String> items = new ArrayList<>();
     }
 
     
-    private RentalsJavaClass updateAction(String clientId) {
+    private RentalsJavaClass updateAction(int clientId) {
         LocalDate dt = editDate.getValue();
        //int id=0;
         String name = editName.getText();
@@ -288,7 +288,7 @@ public static List<String> items = new ArrayList<>();
         if (isNew == false) {
             try {
                 ConnectTheOperations updateOperation=new ConnectTheOperations();
-                updateOperation.updateRecord(name,num,addr,item,qua,date);
+                updateOperation.updateRecord(name,num,addr,item,qua,date,clientId);
 //            java.sql.Connection conn = null;
 //            System.out.println("Connecting to the Database");
 //            try {
@@ -332,7 +332,7 @@ public static List<String> items = new ArrayList<>();
         return updateRecords;
     }
 
-    public void showEmployeeDetail(RentalsJavaClass e, boolean isNew, String id) {
+    public void showEmployeeDetail(RentalsJavaClass e, boolean isNew, int id) {
         this.updateRecords = e;
         this.isNew = isNew;
         this.theID = id;

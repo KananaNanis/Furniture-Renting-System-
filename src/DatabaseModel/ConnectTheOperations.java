@@ -31,22 +31,27 @@ public class ConnectTheOperations {
         statement.setInt(1, index);
         return statement.execute();
     }
-     public void updateRecord (String newName, String newAdd, String newNum, String newItems, String newQua,String newDate) throws SQLException, ClassNotFoundException, InstantiationException, IllegalAccessException {
+     public void updateRecord (String newName, String newAdd, String newNum, 
+             String newItems, String newQua,String newDate,int cid)
+             throws SQLException, ClassNotFoundException,
+             InstantiationException, IllegalAccessException {
         
          ConnectDatabase theConnection=new ConnectDatabase();
-        String updateRecord ="   \"update theClients set\"\n" +
-                    "+ \" cname=?, phoneNo=?,\"\n" +
-                    "+ \" address=?, items =? \"\n" +
-                     "+ \",quantity =? ,theDate =?\"" +
-                        " WHERE cname = " + newName +"END;";
+        String updateRecord ="update theClients set " +
+                    "cname=?, phoneNo=?, " +
+                    " address=?, items =?" +
+                     ", quantity =? ,theDate =? " +
+                        " WHERE c_id =?";
         conn=theConnection.connect();
         statement = conn.prepareStatement(updateRecord);
         statement.setString(1, newName);
-        statement.setString(2, newAdd);
-        statement.setString(3,newNum);
+        statement.setString(2, newNum);
+        statement.setString(3,newAdd);
         statement.setString(4,newItems);
         statement.setString(5, newQua);
         statement.setString(6,newDate);
+        statement.setInt(7, cid);
+        
          statement.execute();  
 }
      

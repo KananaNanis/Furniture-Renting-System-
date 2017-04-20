@@ -86,55 +86,15 @@ public class RentalsController implements Initializable {
     private TextField searchTxtField;
     @FXML
     private AnchorPane rentalsAchor;
+    RentalsJavaClass selectedClient;
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-                java.sql.Connection conn = null;
-        System.out.println("This program demos DB connectivity");
-        try {
-            Class.forName("com.mysql.jdbc.Driver").newInstance();
-            conn = java.sql.DriverManager.getConnection(
-                    "jdbc:mysql://localhost:3300/allureRentals?user=root&password=nash@15492");
-        } catch (Exception e) {
-            System.out.println(e);
-            System.exit(0);
-        }
-        
-        try {
-            java.sql.Statement s = conn.createStatement();
-            java.sql.ResultSet r = s.executeQuery("SELECT * FROM theClients");
-            while (r.next()) {
-                myList.add(new RentalsJavaClass(r.getString("cname"),r.getString("phoneNo")
-                        ,r.getString("address"),r.getString("items"),r.getString("quantity"),r.getString("theDate")));
-
-                System.out.println("TABLE again");
-                nameCol.setCellValueFactory(cellData -> cellData.getValue().nameProperty());
-                 pnumberCol.setCellValueFactory(cellData -> cellData.getValue().pNumProperty());
-                //pnumberCol.setCellValueFactory(cellData -> cellData.getValue().pNumProperty());
-                addressCol.setCellValueFactory(cellData -> cellData.getValue().addressProperty());
-                itemsCol.setCellValueFactory(cellData -> cellData.getValue().itemsProperty());
-                quantityCol.setCellValueFactory(cellData -> cellData.getValue().quantityProperty());
-                dateCol.setCellValueFactory(cellData -> cellData.getValue().dateProperty());
-                
-                clientsTable.setItems(myList);
-               
-
-            }
-            
-            r.close();
-            s.close();
-            conn.close();
-            
-        } catch (SQLException ex) {
-            
-            System.out.println(ex);
-            
-            
-            
-        }        
+                 
+        readFromDb();
         FilteredList<RentalsJavaClass> filteredData = new FilteredList<>(myList, p -> true);
         searchTxtField.textProperty().addListener((observable, oldValue, newValue) -> {
             filteredData.setPredicate(client -> {
@@ -159,8 +119,49 @@ public class RentalsController implements Initializable {
         // TODO
     } 
     
+    public void readFromDb(){
+        //myList = null;
+        java.sql.Connection conn = null;
+        try {
+            Class.forName("com.mysql.jdbc.Driver").newInstance();
+            conn = java.sql.DriverManager.getConnection(
+                    "jdbc:mysql://localhost:3300/allureRentals?user=root&password=nash@15492");
+        } catch (Exception e) {
+            System.out.println(e);
+            System.exit(0);
+        }
+        
+        try {
+            java.sql.Statement s = conn.createStatement();
+            java.sql.ResultSet r = s.executeQuery("SELECT *FROM theClients");
+            while (r.next()) {
+                myList.add(new RentalsJavaClass(r.getString("c_id"),r.getString("cname"),r.getString("phoneNo")
+                        ,r.getString("address"),r.getString("items"),r.getString("quantity"),r.getString("theDate")));
+                
+                System.out.println("TABLE again");
+                nameCol.setCellValueFactory(cellData -> cellData.getValue().nameProperty());
+                 pnumberCol.setCellValueFactory(cellData -> cellData.getValue().pNumProperty());
+                //pnumberCol.setCellValueFactory(cellData -> cellData.getValue().pNumProperty());
+                addressCol.setCellValueFactory(cellData -> cellData.getValue().addressProperty());
+                itemsCol.setCellValueFactory(cellData -> cellData.getValue().itemsProperty());
+                quantityCol.setCellValueFactory(cellData -> cellData.getValue().quantityProperty());
+                dateCol.setCellValueFactory(cellData -> cellData.getValue().dateProperty());
+                
+                clientsTable.setItems(myList);
+
+            }
+            
+            r.close();
+            s.close();
+            conn.close();
+            
+        } catch (SQLException ex) {
+            
+            System.out.println(ex);
+        }       
+    }
     
-private void showDetailStage(RentalsJavaClass selectedEmployee, boolean isNew,String id) throws IOException {
+private void detailsDisplay(RentalsJavaClass selectedEmployee, boolean isNew,int id) throws IOException {
         //Stage prev = (Stage) backBtn.getScene().getWindow();
         //prev.close();
         // FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("FXMLDocument.fxml"));
@@ -207,7 +208,7 @@ private void showDetailStage(RentalsJavaClass selectedEmployee, boolean isNew,St
         prev.close();
         RentalsJavaClass selectedClient = null;
         boolean isNew = true;
-        String CID = " ";
+        int CID=-1;
         addAction(selectedClient,isNew,CID);
             }
 
@@ -218,13 +219,13 @@ private void showDetailStage(RentalsJavaClass selectedEmployee, boolean isNew,St
         prev.close();
         RentalsJavaClass selectedClient = null;
         Boolean isNew = false;
-        String id;
+        int id;
         
         int selectedIndex = clientsTable.getSelectionModel().getSelectedIndex();
         if (selectedIndex >= 0) {
             selectedClient = clientsTable.getItems().get(selectedIndex);
             //deleteRecord(selectedClient.getClientId());
-            id =selectedClient.getName();
+            id =Integer.parseInt(selectedClient.getGetClientID());
             //showDetailStage(selectedClient,false,CID);
             addAction(selectedClient,false,id);
             //clientsTable.getItems().remove(selectedIndex);
@@ -232,8 +233,8 @@ private void showDetailStage(RentalsJavaClass selectedEmployee, boolean isNew,St
         
     }
     
-    private void addAction(RentalsJavaClass selectedClient, Boolean isNew, String id) throws IOException{
-        showDetailStage(selectedClient,isNew,id);
+    private void addAction(RentalsJavaClass selectedClient, Boolean isNew, int id) throws IOException{
+        detailsDisplay(selectedClient,isNew,id);
 //        try {
 //            Parent root = FXMLLoader.load(getClass().getResource("Rentals.fxml"));
 //            scene = new Scene(root);
@@ -273,18 +274,18 @@ private void showDetailStage(RentalsJavaClass selectedEmployee, boolean isNew,St
 //    }
 
     @FXML
-    private void deleteAction(ActionEvent event) throws SQLException, ClassNotFoundException, InstantiationException, IllegalAccessException {
+    private void deleteAction(ActionEvent event) throws SQLException,
+            ClassNotFoundException, InstantiationException, IllegalAccessException {
       
       int selectedIndex = clientsTable.getSelectionModel().getSelectedIndex();
         if (selectedIndex >= 0) {
+            selectedClient = clientsTable.getItems().get(selectedIndex);
             System.out.println(selectedIndex);
-
-                ConnectTheOperations delOp=new ConnectTheOperations();
-                delOp.deleteRecord(selectedIndex);
-                clientsTable.getItems().remove(selectedIndex);
-
-        } 
-        
+                
+                ConnectTheOperations deleteOperations=new ConnectTheOperations();
+                deleteOperations.deleteRecord(Integer.parseInt(selectedClient.getGetClientID()));
+        }
+        readFromDb();
     }
     
 //        public void deleteRecord(String id){
