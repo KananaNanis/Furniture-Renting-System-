@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" fx:id="rentalsAchor" prefHeight="563.0" prefWidth="674.0" styleClass="mainFxmlClass" stylesheets="@AllureCSS.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="finalproject.allurerentals.RentalsController">
+<AnchorPane id="AnchorPane" fx:id="rentalsAchor" prefHeight="520.0" prefWidth="670.0" styleClass="mainFxmlClass" stylesheets="@AllureCSS.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="finalproject.allurerentals.RentalsController">
    <children>
       <Label layoutX="200.0" layoutY="7.0" text="Allure Rentals">
          <font>

@@ -138,15 +138,12 @@ public class RentalsController implements Initializable {
             while (r.next()) {
                 myList.add(new RentalsJavaClass(r.getString("c_id"),r.getString("cname"),r.getString("phoneNo")
                         ,r.getString("address"),r.getString("items"),r.getString("quantity"),r.getString("theDate")));
-                
-                
                 nameCol.setCellValueFactory(cellData -> cellData.getValue().nameProperty());
                  pnumberCol.setCellValueFactory(cellData -> cellData.getValue().pNumProperty());
                 addressCol.setCellValueFactory(cellData -> cellData.getValue().addressProperty());
                 itemsCol.setCellValueFactory(cellData -> cellData.getValue().itemsProperty());
                 quantityCol.setCellValueFactory(cellData -> cellData.getValue().quantityProperty());
                 dateCol.setCellValueFactory(cellData -> cellData.getValue().dateProperty());
-                
                 clientsTable.setItems(myList);
 
             }
@@ -189,12 +186,9 @@ public class RentalsController implements Initializable {
 
             connectController = loader.getController();
             connectController.passHandleOnStage(detailStage);
-//
 
         connectController.displayClient(theClient,newClient,id);
         detailStage.showAndWait();
-        
-    //}
     }
               
 
@@ -204,15 +198,17 @@ public class RentalsController implements Initializable {
      * This method adds the added client to the table 
      * @throws IOException
      */
-    private void addAction(ActionEvent event) throws IOException {      
-        Stage prev = (Stage) backBtn.getScene().getWindow();
-        prev.close();
+    private void addAction(ActionEvent event) throws IOException {
+         Stage previous = (Stage) backBtn.getScene().getWindow();
+         previous.close();
         RentalsJavaClass selectedClient = null;
         boolean newClient = true;
         int id=-1;
         addClient(selectedClient,newClient,id);
+        
+     
             }
-
+    
 
     @FXML
     /**
@@ -220,10 +216,10 @@ public class RentalsController implements Initializable {
      * @throws IOException
      */
     private void editAction(ActionEvent event) throws IOException {
-        Stage prev = (Stage) backBtn.getScene().getWindow();
-        prev.close();
+        //Stage previous = (Stage) backBtn.getScene().getWindow();
+        //previous.hide();
         RentalsJavaClass selectedClient = null;
-        Boolean newClient = true;
+        Boolean newClient = false;
         int id;
         
         int selectedIndex = clientsTable.getSelectionModel().getSelectedIndex();
@@ -231,8 +227,10 @@ public class RentalsController implements Initializable {
             selectedClient = clientsTable.getItems().get(selectedIndex);
             id =Integer.parseInt(selectedClient.getGetClientID());
             addClient(selectedClient,newClient,id);
+            
             //clientsTable.getItems().remove(selectedIndex);
         }
+      
         
     }
     

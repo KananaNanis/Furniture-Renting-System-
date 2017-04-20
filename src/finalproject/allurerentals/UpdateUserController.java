@@ -74,6 +74,8 @@ public static List<String> items = new ArrayList<>();
     @FXML
     private Label checkNumLen;
     String cost;
+    @FXML
+    private Label checkTheItem;
 
     @Override
     /**
@@ -105,10 +107,16 @@ public static List<String> items = new ArrayList<>();
      */
     private void saveAction(ActionEvent event) throws IOException, FileNotFoundException, SQLException, ClassNotFoundException {
         String checkNum=editNum.getText();
+        String checkItem=editItems.getText();
         if(checkNum.length()<10||checkNum.length()>10){
             checkNumLen.setText("Phone Number should be 10 digits");
+        
+        }else if(!checkItem.equalsIgnoreCase("Tables")||!checkItem.
+                    equalsIgnoreCase("Chairs")||!checkItem.equalsIgnoreCase("Tents")){
+                checkTheItem.setText("The item can be a table/chair/tent");
+            }
             
-        }else{
+        else{
        if (newClient == true) {
                         try {
                             saveClient();

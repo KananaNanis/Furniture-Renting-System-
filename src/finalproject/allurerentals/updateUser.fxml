@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" fx:id="updateAnchor" prefHeight="550.0" prefWidth="615.0" styleClass="mainFxmlClass" stylesheets="@AllureCSS.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="finalproject.allurerentals.UpdateUserController">
+<AnchorPane id="AnchorPane" fx:id="updateAnchor" prefHeight="538.0" prefWidth="688.0" styleClass="mainFxmlClass" stylesheets="@AllureCSS.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="finalproject.allurerentals.UpdateUserController">
    <children>
       <Label layoutX="71.0" layoutY="83.0" text="Name" textFill="#f80e06">
          <font>
@@ -53,5 +53,6 @@
             <Font size="35.0" />
          </font>
       </Label>
+      <Label fx:id="checkTheItem" layoutX="362.0" layoutY="214.0" prefHeight="30.0" prefWidth="220.0" />
    </children>
 </AnchorPane>
