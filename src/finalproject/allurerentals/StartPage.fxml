@@ -37,12 +37,12 @@
             <Font name="System Bold Italic" size="36.0" />
          </font>
       </Label>
-      <Label layoutX="116.0" layoutY="171.0" text="The Best Event Rental Company" textFill="#f21106">
+      <Label layoutX="116.0" layoutY="171.0" text="The Best Event Rental Company" textFill="#fc0101">
          <font>
             <Font name="AR HERMANN" size="32.0" />
          </font>
       </Label>
-      <Label layoutX="220.0" layoutY="433.0" prefHeight="93.0" prefWidth="372.0" text="Want It, Rent It!!!" textFill="#e10b0b">
+      <Label layoutX="220.0" layoutY="433.0" prefHeight="93.0" prefWidth="372.0" text="Want It, Rent It!!!" textFill="RED">
          <font>
             <Font name="AR DELANEY" size="44.0" />
          </font>

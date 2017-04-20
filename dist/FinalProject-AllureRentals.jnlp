@@ -8,7 +8,7 @@
   </information>
   <resources>
     <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
-    <jar href="FinalProject-AllureRentals.jar" size="4909197" download="eager" />
+    <jar href="FinalProject-AllureRentals.jar" size="4908778" download="eager" />
     <jar href="lib\mysql-connector-java-5.1.36-bin.jar" size="972009" download="eager" />
   </resources>
   <applet-desc  width="800" height="600" main-class="com.javafx.main.NoJavaFXFallback"  name="FinalProject-AllureRentals" >

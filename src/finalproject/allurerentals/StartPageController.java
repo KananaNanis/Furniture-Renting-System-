@@ -25,7 +25,7 @@ import javafx.stage.Stage;
 /**
  * FXML Controller class
  *
- * @author Study
+ * @author Nanis
  */
 public class StartPageController implements Initializable {
 
@@ -44,8 +44,8 @@ public class StartPageController implements Initializable {
     private Menu rentals;
     @FXML
     private Menu acc;
-    @FXML
-    private Menu exit;
+    //@FXML
+    //private Menu exit;
     @FXML
     private Label welcome;
 
@@ -70,6 +70,10 @@ public class StartPageController implements Initializable {
     }
 
     @FXML
+    /**
+     * loads the log in  page 
+     * @throws IOException
+     */
     private void logAction(ActionEvent event) {
         try {
             Parent root = FXMLLoader.load(getClass().getResource("FXMLDocument.fxml"));
@@ -82,6 +86,10 @@ public class StartPageController implements Initializable {
     }
 
     @FXML
+    /**
+     * closes the page
+     * @throws IOException
+     */
     private void closeAction(ActionEvent event) {
         Platform.exit();
     }

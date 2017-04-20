@@ -30,11 +30,11 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-// http://www.maineventtent.com/event-rentals/tables-chairs/
+
 
 /**
- *
- * @author Study
+ *FXML controller class for the login page
+ * @author Nanis
  */
 public class FXMLDocumentController implements Initializable {
     Scene scene;
@@ -82,6 +82,13 @@ public class FXMLDocumentController implements Initializable {
     }    
 
     @FXML
+    /**
+     * a method to check login details for validation
+     * @param checkUser
+     * @param checkPass
+     * @throws Exception
+     */
+
     private void logInAction(ActionEvent event) throws ClassNotFoundException, InstantiationException, IllegalAccessException, SQLException {
         String checkUser = userNameTxtField.getText();
         String checkPass = passwordTxtField.getText();
@@ -108,22 +115,12 @@ public class FXMLDocumentController implements Initializable {
 
                   
 
-                } else {
-                    //Alert alert = new Alert(Alert.AlertType.INFORMATION);
-//                    alert.initModality(Modality.WINDOW_MODAL);
-//                    alert.setHeaderText("");
-                    //alert.setContentText("Login failure!!Please Register");
-//                    alert.showAndWait();
-                   //alert.setContentText("Login failure!!Please Register");
-                  //alert.showAndWait();
-//                   
-//                   Alert alert = new Alert(Alert.AlertType.INFORMATION, "Login failure!!Please Register", ButtonType.OK);
-//                   alert.getDialogPane();//.setMinHeight(Region.USE_PREF_SIZE);
-                   //alert.show();
-//                  Optional<ButtonType> result = alert.showAndWait();
-//            if (result.get() == ButtonType.OK){
-//                alert.close();
-//            }
+                } 
+                else{
+                    Alert alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setContentText("Login failure!!Please Register");
+                    alert.showAndWait();
+
                  
 //                    //checkValidation.setText("Login failure!!Please Register");
 //                    Parent root = FXMLLoader.load(getClass().getResource("popUp.fxml"));
@@ -138,6 +135,10 @@ public class FXMLDocumentController implements Initializable {
     }
 
     @FXML
+    /**
+     * loads the registration  page 
+     * @throws IOException
+     */
     private void registerAction(ActionEvent event) {
         try {
             Parent root = FXMLLoader.load(getClass().getResource("RegistrationPage.fxml"));
@@ -148,7 +149,11 @@ public class FXMLDocumentController implements Initializable {
             System.err.println(e.toString());
         }
     }
-
+    
+    /**
+     * loads the available items  page 
+     * @throws IOException
+     */
     private void viewOurs(ActionEvent event) {
         try {
             Parent root = FXMLLoader.load(getClass().getResource("AboutUs.fxml"));
@@ -160,6 +165,10 @@ public class FXMLDocumentController implements Initializable {
         }
     }
 
+    /**
+     * loads the log in page
+     * @throws IOException
+     */
     private void logAction(ActionEvent event) {
         try {
             Parent root = FXMLLoader.load(getClass().getResource("FXMLDocument.fxml"));
@@ -174,13 +183,13 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private void closeAction(ActionEvent event) {
         Platform.exit();
-    }
+    }  
 
     @FXML
-    private void exitAction(ActionEvent event) {
-    }
-
-    @FXML
+    /**
+     * loads start page 
+     * @throws IOException
+     */
     private void backAction(ActionEvent event) {
         try {
             Parent root = FXMLLoader.load(getClass().getResource("StartPage.fxml"));
@@ -190,6 +199,10 @@ public class FXMLDocumentController implements Initializable {
         } catch (IOException e) {
             System.err.println(e.toString());
         }
+    }
+
+    @FXML
+    private void exitAction(ActionEvent event) {
     }
     
 }

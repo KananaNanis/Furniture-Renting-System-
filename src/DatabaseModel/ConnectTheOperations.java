@@ -23,12 +23,12 @@ public class ConnectTheOperations {
     ResultSet rs= null;
     PreparedStatement statement = null;
 
-    public boolean deleteRecord(int index) throws SQLException, ClassNotFoundException, InstantiationException, IllegalAccessException {
+    public boolean deleteRecord(int id) throws SQLException, ClassNotFoundException, InstantiationException, IllegalAccessException {
         ConnectDatabase theConnection=new ConnectDatabase();
         String query = "DELETE FROM theClients WHERE c_id=?";
         conn=theConnection.connect();
         statement = conn.prepareStatement(query);
-        statement.setInt(1, index);
+        statement.setInt(1, id);
         return statement.execute();
     }
      public void updateRecord (String newName, String newAdd, String newNum, 
@@ -57,30 +57,34 @@ public class ConnectTheOperations {
      
      public boolean addClient(String name, String add, String phone, String items, String quantity,String date) throws SQLException, ClassNotFoundException, InstantiationException, IllegalAccessException {
         ConnectDatabase theConnection=new ConnectDatabase();
-         String query = "INSERT INTO theClients VALUES(?,?,?,?,?,?,?)";
+        //Connection connection = null;
+        //java.sql.Statement s = connection.createStatement();
+        //java.sql.ResultSet r = s.executeQuery("insert into theClients values(?,?,?,?,?,?,?)");
+        
+        String query = "insert into theClients values(?,?,?,?,?,?,?)";
         conn=theConnection.connect();
+        //while (r.next()) {
         statement = conn.prepareStatement(query);
         statement.setString(1, "0");
         statement.setString(2, name);
         statement.setString(3, add);
         statement.setString(4, phone);
-        //statement.setString(5, chair);
         statement.setString(5, items);
         statement.setString(6, quantity);
         statement.setString(7, date);
-
+        //}
         return statement.execute();
+        
     }
 
-    public boolean addAccount(String username, String passwad, String C_passwad) throws SQLException, ClassNotFoundException, InstantiationException, IllegalAccessException {
+    public boolean register(String username, String password) throws SQLException, ClassNotFoundException, InstantiationException, IllegalAccessException {
         ConnectDatabase theConnection=new ConnectDatabase();
-        String query = "Insert Into theClients set u_id=?,username =  ? ,passwd =?";
+        String query = "Insert Into theClients set u_id=?,username =?,passwd =?";
         conn=theConnection.connect();
         statement = conn.prepareStatement(query);
 
         statement.setString(1, username);
-        statement.setString(2, passwad);
-        //statement.setString(3, C_passwad);
+        statement.setString(2, password);
         return statement.execute();
 
     }

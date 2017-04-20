@@ -58,11 +58,7 @@ public class RentalsJavaClass {
     public StringProperty addressProperty() {
         return address;
     }
-    
-    
-    
-
-       
+     
     public String toString(){
     return getName()+" "+getAddress()+ " " +getpNum()+ " "+getItems()+ " "+getQuantity()+ " "+getDate()+" "+getGetClientID();
     }
@@ -107,11 +103,7 @@ public class RentalsJavaClass {
 
     public StringProperty itemsProperty() {
         return items;
-    }
-
-    
-
-    
+    }  
 
     private final StringProperty name;
 
@@ -137,7 +129,7 @@ public class RentalsJavaClass {
         this.address = new SimpleStringProperty(add);
         this.pNum = new SimpleStringProperty(phoneN);
         this.getClientID = new SimpleStringProperty(id);
-        
+       
     
     }
     

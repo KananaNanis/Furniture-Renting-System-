@@ -40,7 +40,7 @@ import javafx.stage.Stage;
 /**
  * FXML Controller class
  *
- * @author Study
+ * @author Nanis
  */
 public class UpdateUserController implements Initializable {
 public static List<String> items = new ArrayList<>();
@@ -64,13 +64,10 @@ public static List<String> items = new ArrayList<>();
 
     private Stage thisStage;
     private RentalsJavaClass updateRecords;
-    private boolean isNew;
-    //private RentalsController userRecords = null;
+    private boolean newClient;
     private int theID;
 
-    /**
-     * Initializes the controller class.
-     */
+    
     java.sql.Connection conn = null;
     @FXML
     private AnchorPane updateAnchor;
@@ -79,7 +76,9 @@ public static List<String> items = new ArrayList<>();
     String cost;
 
     @Override
-    //java.sql.Connection conn = null;
+    /**
+     * Initializes the controller class.
+     */
     public void initialize(URL url, ResourceBundle rb) {
         java.sql.Connection conn = null;
         System.out.println("Connecting...");
@@ -100,15 +99,19 @@ public static List<String> items = new ArrayList<>();
     }
 
     @FXML
+    /**
+     * saves the added/edited record into the table and the database
+     * @throws IOException,FileNotFoundException,SQLException,ClassNotFoundException
+     */
     private void saveAction(ActionEvent event) throws IOException, FileNotFoundException, SQLException, ClassNotFoundException {
         String checkNum=editNum.getText();
         if(checkNum.length()<10||checkNum.length()>10){
             checkNumLen.setText("Phone Number should be 10 digits");
             
         }else{
-       if (isNew == true) {
+       if (newClient == true) {
                         try {
-                            theSaveAction();
+                            saveClient();
                             try {
                                 Parent root = FXMLLoader.load(getClass().getResource("Rentals.fxml"));
                                 Scene scene = new Scene(root);
@@ -127,8 +130,7 @@ public static List<String> items = new ArrayList<>();
            }
             
         } else {
-            updateAction(theID);
-            //editName.setText(editName.getText());
+            updateClient(theID);
             try {
             Parent root = FXMLLoader.load(getClass().getResource("Rentals.fxml"));
             Scene scene = new Scene(root);
@@ -142,7 +144,12 @@ public static List<String> items = new ArrayList<>();
         }
     }
 
-    private RentalsJavaClass theSaveAction() throws FileNotFoundException, IOException, SQLException, ClassNotFoundException, InstantiationException, IllegalAccessException {
+    /**
+     * gets the the details of the added client 
+     * @throws IOException,FileNotFoundException,SQLException,ClassNotFoundException
+     * @return updateRecords
+     */
+    private RentalsJavaClass saveClient() throws FileNotFoundException, IOException, SQLException, ClassNotFoundException, InstantiationException, IllegalAccessException {
         LocalDate dt = editDate.getValue();
         String name = editName.getText();
         String num = editNum.getText();
@@ -156,46 +163,23 @@ public static List<String> items = new ArrayList<>();
                  dt.toString());
         items.add(name + " " + num + " " + addr + " " + item+" "+qua+" "+date); 
    
-        if (isNew==true) {
+        //if (newClient==true) {
             ConnectTheOperations addOpeartion=new ConnectTheOperations();
                 addOpeartion.addClient(name,num,addr,item,qua,date);
-//            java.sql.Connection conn = null;
-//            System.out.println("Connecting to the Database");
-//            try {
-//                Class.forName("com.mysql.jdbc.Driver").newInstance();
-//                conn = java.sql.DriverManager.getConnection(
-//                        "jdbc:mysql://localhost:3300/allureRentals?user=root&password=nash@15492");
-//            } catch (Exception e) {
-//                System.err.println(e);
-//                System.exit(0);
-//            }
-//            try {
-//                PreparedStatement p;
-//                
-//                p = conn.prepareStatement("Insert Into theClients set"
-//                        + " cname=?, phoneNo=?,"
-//                        + " address=?, items =? "
-//                        + ",quantity =? ,theDate =?"
-//                );
-//                //p2 = conn.prepareStatement("delete from Clients where cname=? and phoneNo =?");
-//                p.setString(1, name);
-//                p.setString(2, num);
-//                p.setString(3, addr);
-//                p.setString(4, item);
-//                p.setString(5, qua);
-//                p.setString(6, date);
-//                //p.setInt(7, _clientID);
-//                p.execute(); //use execute if no results expected back
+                
                 writeToFile(items, "cost.txt",cost);
-//            } catch (SQLException e) {
-//                System.err.println("Error " + e.toString());
-//            }
-//
-        }
+
+        //}
         return updateRecords;
     }
     
-    
+    /**
+     * writes the details of a client to a file
+     * @param list
+     * @param path
+     * @param myCost
+     * @return strI
+     */
     private String writeToFile(java.util.List list, String path,String myCost) {
         String strI = null;
             BufferedWriter out = null;
@@ -212,8 +196,6 @@ public static List<String> items = new ArrayList<>();
                 if(theItem.startsWith("tabl")||theItem.startsWith("Tabl")){
                     String theQuants=editQuantity.getText();
                     String[] quants=theQuants.split(",");
-                    //int i = (Integer) myCost;
-                    //int newCost=Integer.parseInt(myCost);
                     
                     int newCost=Integer.parseInt(quants[0])*200;
                     StringBuilder sb = new StringBuilder();
@@ -253,17 +235,16 @@ public static List<String> items = new ArrayList<>();
                     System.out.println("Cost for Tents:"+" "+items.add(strI));
                     
                 }
-                //int totalCost
+               
             
             }
-            //return myCost;
+            
                     for (Object s : list) {
                             out.write((String) s);
                             out.newLine();
 
                     }
-                    //return myCost;
-                    
+                   
                     out.close();
             } catch (IOException e) {
             }
@@ -271,8 +252,12 @@ public static List<String> items = new ArrayList<>();
             
     }
 
-    
-    private RentalsJavaClass updateAction(int clientId) {
+    /**
+     * updates the details of the selected client
+     * @param clientId
+     * @return updateRecords
+     */
+    private RentalsJavaClass updateClient(int clientId) {
         LocalDate dt = editDate.getValue();
        //int id=0;
         String name = editName.getText();
@@ -285,39 +270,11 @@ public static List<String> items = new ArrayList<>();
                  editAddress.getText(), editItems.getText(), editQuantity.getText(),
                  dt.toString());
 
-        if (isNew == false) {
+       /// if (newClient == false) {
             try {
                 ConnectTheOperations updateOperation=new ConnectTheOperations();
                 updateOperation.updateRecord(name,num,addr,item,qua,date,clientId);
-//            java.sql.Connection conn = null;
-//            System.out.println("Connecting to the Database");
-//            try {
-//                Class.forName("com.mysql.jdbc.Driver").newInstance();
-//                conn = java.sql.DriverManager.getConnection(
-//                        "jdbc:mysql://localhost:3300/allureRentals?user=root&password=nash@15492");
-//            } catch (Exception e) {
-//                System.err.println(e);
-//                System.exit(0);
-//            }
-//
-//            try {
-//                PreparedStatement p;
-//                
-//                p = conn.prepareStatement("update theClients set"
-//                        + " cname=?, phoneNo=?,"
-//                        + " address=?, items =? "
-//                        + ",quantity =? ,theDate =?");
-//                p.setString(1, name);
-//                p.setString(2, num);
-//                p.setString(3, addr);
-//                p.setString(4, item);
-//                p.setString(5, qua);
-//                p.setString(6, date);
-//               // p.setInt(7, _clientID);
-//                p.execute(); //use execute if no results expected back
-//            } catch (SQLException e) {
-//                System.err.println("Error " + e.toString());
-//            }
+
             } catch (SQLException ex) {
                 Logger.getLogger(UpdateUserController.class.getName()).log(Level.SEVERE, null, ex);
             } catch (ClassNotFoundException ex) {
@@ -328,23 +285,29 @@ public static List<String> items = new ArrayList<>();
                 Logger.getLogger(UpdateUserController.class.getName()).log(Level.SEVERE, null, ex);
             }
 
-        }
+        //}
         return updateRecords;
     }
 
-    public void showEmployeeDetail(RentalsJavaClass e, boolean isNew, int id) {
-        this.updateRecords = e;
-        this.isNew = isNew;
+    /**
+     * displays the details of a client in the table/database
+     * @param client
+     * @param newClient
+     * @param id 
+     */
+    public void displayClient(RentalsJavaClass client, boolean newClient, int id) {
+        this.updateRecords = client;
+        this.newClient = newClient;
         this.theID = id;
 
         LocalDate dt = editDate.getValue();
         //dt.toString();
-        if (e != null) {
-            editName.setText(e.getName());
-            editNum.setText(e.getpNum());
-            editAddress.setText(e.getAddress());
-            editItems.setText(e.getItems());
-            editQuantity.setText(e.getQuantity());
+        if (client != null) {
+            editName.setText(client.getName());
+            editNum.setText(client.getpNum());
+            editAddress.setText(client.getAddress());
+            editItems.setText(client.getItems());
+            editQuantity.setText(client.getQuantity());
             //dt.set(e.getDate());
         } else {
             editName.setText("");
@@ -356,31 +319,12 @@ public static List<String> items = new ArrayList<>();
         }
     }
 
-    public void showEmployeeDetail2(RentalsJavaClass e,boolean isNew) {
-        this.updateRecords = e;
-        this.isNew = isNew;
-       //this.myClientID = myCID;
-
-        //LocalDate dt = editDate.getValue();
-        //dt.toString();
-        if (e != null) {
-            editName.setText(e.getName());
-            editNum.setText(e.getpNum());
-            editAddress.setText(e.getAddress());
-            editItems.setText(e.getItems());
-            editQuantity.setText(e.getQuantity());
-            //dt.setText(e.getDate());
-        } else {
-            editName.setText("");
-            editNum.setText("");
-            editAddress.setText("");
-            editItems.setText("");
-            editQuantity.setText("");
-            //editDate.setText("");
-        }
-    }
+   
 
     @FXML
+    /**
+     * loads the rentals class
+     */
     private void backAction(ActionEvent event) {
         try {
             Parent root = FXMLLoader.load(getClass().getResource("Rentals.fxml"));

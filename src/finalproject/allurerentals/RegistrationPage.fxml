@@ -32,7 +32,7 @@
          <font>
             <Font size="20.0" />
          </font></Label>
-      <Label layoutX="233.0" layoutY="320.0" text="Email Address" textFill="#074cf7">
+      <Label layoutX="233.0" layoutY="320.0" text="Email Address" textFill="#f80e06">
          <font>
             <Font size="20.0" />
          </font></Label>

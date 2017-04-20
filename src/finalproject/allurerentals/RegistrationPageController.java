@@ -31,7 +31,7 @@ import javafx.stage.Stage;
 /**
  * FXML Controller class
  *
- * @author Study
+ * @author Nanis
  */
 public class RegistrationPageController implements Initializable {
     Scene scene;
@@ -69,6 +69,11 @@ public class RegistrationPageController implements Initializable {
     }    
 
     @FXML
+    /**
+     * a method to check sign up details for validation
+     * @throws SQLException
+     * @throws ClassNotFoundException
+     */
     private void signUpAction(ActionEvent event) throws SQLException {
         String checkEmail=emailTxtField.getText();
         
@@ -107,11 +112,11 @@ public class RegistrationPageController implements Initializable {
                     stage.setScene(scene);
                         
                     } else {
-                        Alert alert = new Alert(Alert.AlertType.ERROR);
-                   alert.setContentText("Password and Confirm password do not match");
-                  alert.showAndWait();
+                        //Alert alert = new Alert(Alert.AlertType.ERROR);
+                        //alert.setContentText("Password and Confirm password do not match");
+                        //alert.showAndWait();
                       
-                    //checkPassword.setText("Password and Confirm password do not match!!");
+                    checkPassword.setText("Password and Confirm password do not match!!");
                     }
                 }else{
                         checkEmailReg.setText("The email is invalid");
@@ -126,6 +131,10 @@ public class RegistrationPageController implements Initializable {
     }
 
     @FXML
+    /**
+     * This method loads the login  page 
+     * @throws IOException
+     */
     private void RegBackAction(ActionEvent event) {
         try {
             Parent root = FXMLLoader.load(getClass().getResource("FXMLDocument.fxml"));
@@ -138,6 +147,10 @@ public class RegistrationPageController implements Initializable {
     }
 
     @FXML
+    /**
+     * This method allows user to log out 
+     * @throws IOException
+     */
     private void logOutAction(ActionEvent event) {
         Platform.exit();
     }
