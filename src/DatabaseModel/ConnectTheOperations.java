@@ -12,7 +12,8 @@ import java.sql.SQLException;
 
 /**
  *
- * @author Study
+ * @author Nanis
+ * This is a class to connect the different operation with the database
  */
 
 
@@ -22,7 +23,15 @@ public class ConnectTheOperations {
     Connection conn = null;
     ResultSet rs= null;
     PreparedStatement statement = null;
-
+    /**
+     * This method deletes client from the database
+     * @param id this is the unique id of the selected client
+     * @return the executed statement
+     * @throws SQLException
+     * @throws ClassNotFoundException
+     * @throws InstantiationException
+     * @throws IllegalAccessException 
+     */
     public boolean deleteRecord(int id) throws SQLException, ClassNotFoundException, InstantiationException, IllegalAccessException {
         ConnectDatabase theConnection=new ConnectDatabase();
         String query = "DELETE FROM theClients WHERE c_id=?";
@@ -31,6 +40,21 @@ public class ConnectTheOperations {
         statement.setInt(1, id);
         return statement.execute();
     }
+    
+    /**
+     * This updates the details of the selected client in the database
+     * @param newName this the name of the selected client
+     * @param newAdd this the address of the selected client
+     * @param newNum this the number of the selected client
+     * @param newItems this the item bought
+     * @param newQua this the quantity bought
+     * @param newDate this the date
+     * @param cid this is the unique id of the client
+     * @throws SQLException
+     * @throws ClassNotFoundException
+     * @throws InstantiationException
+     * @throws IllegalAccessException 
+     */
      public void updateRecord (String newName, String newAdd, String newNum, 
              String newItems, String newQua,String newDate,int cid)
              throws SQLException, ClassNotFoundException,
@@ -54,7 +78,20 @@ public class ConnectTheOperations {
         
          statement.execute();  
 }
-     
+     /**
+      * This method adds a client into the database
+      * @param name this the name of the selected client
+      * @param add this the address of the selected client
+      * @param phone this the number of the selected client
+      * @param items this the item bought
+      * @param quantity this the quantity bought
+      * @param date this is the date
+      * @return the the added client
+      * @throws SQLException
+      * @throws ClassNotFoundException
+      * @throws InstantiationException
+      * @throws IllegalAccessException 
+      */
      public boolean addClient(String name, String add, String phone, String items, String quantity,String date) throws SQLException, ClassNotFoundException, InstantiationException, IllegalAccessException {
         ConnectDatabase theConnection=new ConnectDatabase();
         //Connection connection = null;
@@ -76,8 +113,18 @@ public class ConnectTheOperations {
         return statement.execute();
         
     }
-
-    public boolean register(String username, String password) throws SQLException, ClassNotFoundException, InstantiationException, IllegalAccessException {
+     
+     /**
+      * This method records a new user in the database
+      * @param username the name
+      * @param password the password
+      * @return the added user
+      * @throws SQLException
+      * @throws ClassNotFoundException
+      * @throws InstantiationException
+      * @throws IllegalAccessException 
+      */
+    public boolean registerUser(String username, String password) throws SQLException, ClassNotFoundException, InstantiationException, IllegalAccessException {
         ConnectDatabase theConnection=new ConnectDatabase();
         String query = "Insert Into theClients set u_id=?,username =?,passwd =?";
         conn=theConnection.connect();

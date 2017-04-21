@@ -1,189 +1,52 @@
-hjkl 1234567890 jk Table 5 2017-03-28
-1000
-Name Phone Address Items Quantity Datefghjk 4567890238 dfr Tables,Chairs,Tents 3,5,6 2017-03-29
-600
+Name   Phone   Address   Items   Quantity   Date
+Lorna 0711968785 Kenya 34 Tables,Chairs,Tents 4,5,6 2017-04-18
+800
 500
 2100
-Name Phone Address Items Quantity Date
-ertyuio 1234567890 hjuik Tables,Chairs,Tents 4,8,9 2017-04-05
-800
-800
-3150
-Name Phone Address Items Quantity Date
-hjkl 0987654321 dfght Tables,Tents 8,9 2017-03-28
-1600
-hjkl 0987654321 dfght Tables,Chairs,tents 8,9,5 2017-03-28
-1600
-900
+Alex 0745362354 Lewa 34 Tables,Chairs,Tents 10,45,5 2013-06-04
+2000
+4500
 1750
-Name Phone Address Items Quantity Date
-ertyui 1234567890 hjuik Tables,Chairs,Tents 4,8,9 2017-04-10
-800
-800
-3150
-Name Phone Address Items Quantity Date
-ertyuio 1234567890 ghjki Tables,Chairs,Tents 2,4,6 2017-03-28
-400
-400
-2100
-Name Phone Address Items Quantity Date
-ertyuio 1234567890 ghjki Tables,Chairs,Tents 2,4,6 2017-03-28
-400
-400
-2100
-Book 1234567890 g; fghjkl rtyuio 2017-03-27
-Name Phone Address Items Quantity Date
-wertyui 1234567890 fty tables,chairs 4,7 2017-03-27
+Collins 0987654321 Unguja 45 Chairs,Tables,Tents 20,54,3 2016-08-09
+5400
+4000
+1050
+Name   Phone   Address   Items   Quantity   Date
+Leah 1234567890 Nairobi 00100 Tables 9 2017-04-25
+1800
+Kanana 8901234567 Maua 225 Tables,Chairs,Tents 23,45,19 2010-12-25
+4600
+4500
+6650
+Name   Phone   Address   Items   Quantity   Date
+Violet 0765432672 Meru Tables,Chairs 4,7 2017-03-28
 800
 700
-Name Phone Address Items Quantity Date
-wertyui 1234567890 fty tables,chairs 4,7 2017-03-27
-800
-700
-yujj 1234567890 fty tables,chairs 4,7 2017-03-28
-800
-700
-Name Phone Address Items Quantity Date
-Nanis 1234567890 sdfghj Tables,Chairs,Tents 5,7,8 2017-03-27
-1000
-700
-2800
-Name Phone Address Items Quantity Date
-Nanis 1234567890 sdfghj Tables,Chairs,Tents 5,7,8 2017-03-27
-1000
-700
-2800
-Nana 1234567890 sdfghj Tables,Chairs,Tents 5,7,8 2017-03-28
-1000
-700
-2800
-Name Phone Address Items Quantity Date
-Nanis 1234567890 sdfghj Tables,Chairs,Tents 5,7,8 2017-03-27
-1000
-700
-2800
-Nana 1234567890 sdfghj Tables,Chairs,Tents 5,7,8 2017-03-28
-1000
-700
-2800
-ertyuio 7687905462 ertyui Tables,Chairs 5,9 2017-03-28
-1000
-900
-Name Phone Address Items Quantity Date
-Nanis 1234567890 sdfghj Tables,Chairs,Tents 5,7,8 2017-03-27
-1000
-700
-2800
-Nana 1234567890 sdfghj Tables,Chairs,Tents 5,7,8 2017-03-28
-1000
-700
-2800
-ertyuio 7687905462 ertyui Tables,Chairs 5,9 2017-03-28
-1000
-900
-6789 7687905462 ertyui Tables,Chairs 5,9 2017-04-04
-1000
-900
-Name Phone Address Items Quantity Date
-ertyui 0987654321 fghjk Tables,Chairs,Tents 5,8,9 2017-03-28
-1000
-800
-3150
-Name Phone Address Items Quantity Date
-ertyui 0987654321 fghjk Tables,Chairs,Tents 5,8,9 2017-03-28
-1000
-800
-3150
-Lola 0987654321 fghjk Tables,Chairs,Tents 5,8,9 2017-03-27
-1000
-800
-3150
-Name Phone Address Items Quantity Date
-Nancy 1234567890 dfghjk Tables,Chairs,Tents 5,8,9 2017-04-04
-1000
-800
-3150
-Name Phone Address Items Quantity Date
-sdfghj 2345123456 rtyui Tables,Chairs,Tents 5,7,8 2017-04-10
-1000
-700
-2800
-Name Phone Address Items Quantity Date
-ertyuio 2345678901 sdf Tables,Chairs 4,67 2017-04-04
-800
-6700
-Name Phone Address Items Quantity Date
-ertyuio 2345678901 sdf Tables,Chairs 4,67 2017-04-04
-800
-6700
-io 2345678901 sdf Tables,Chairs 4,67 2017-04-04
-800
-6700
-Name Phone Address Items Quantity Date
-ertyuiop 1234567890 kl;yuiop Tables,Chairs,Tents 4,5,6 2017-03-27
-800
-500
-2100
-Name Phone Address Items Quantity Date
-ertyuiop 1234567890 kl;yuiop Tables,Chairs,Tents 4,5,6 2017-03-27
-800
-500
-2100
-uio 1234567890 kl;yuiop Tables,Chairs,Tents 4,5,6 2017-04-03
-800
-500
-2100
-Name Phone Address Items Quantity Date
-fghjkl 2435475565 dfgt Tables 3 2017-03-27
-600
-Name Phone Address Items Quantity Date
-fghjkl 2435475565 dfgt Tables 3 2017-03-27
-600
-fghjkl 7890345678 dfghj Tables,Chairs,Tents 4,6,7 2017-03-28
-800
-600
-2450
-Name Phone Address Items Quantity Date
-tyui 1234567890 dfghy Tables,Chairs 45,6 2017-03-28
-9000
-600
-Name Phone Address Items Quantity Date
-dfgrty 1234567890 234 Tables 56 2018-06-20
-11200
-Name Phone Address Items Quantity Date
-dfgrty 1234567890 234 Tables 56 2018-06-20
-11200
-rtyui 1234567890 fgh Tables 5 2017-04-03
-1000
-Name Phone Address Items Quantity Date
-dfgrty 1234567890 234 Tables 56 2018-06-20
-11200
-rtyui 1234567890 fgh Tables 5 2017-04-03
-1000
-ertyuio 1234567890 sdfgt Tables,Chairrs 4,6 2017-04-23
-800
-600
-Name Phone Address Items Quantity Date
-dfgrty 1234567890 234 Tables 56 2018-06-20
-11200
-rtyui 1234567890 fgh Tables 5 2017-04-03
-1000
-ertyuio 1234567890 sdfgt Tables,Chairrs 4,6 2017-04-23
-800
-600
-hji 1234567890 dfghy Tables,Chairs 45,6 2017-03-28
-9000
-600
-Name Phone Address Items Quantity Date
-dfgftry 0987654321 rt Tables 6 2017-04-10
+Name   Phone   Address   Items   Quantity   Date
+Betty 0235678795 Accra 34 Tables,Chairs,Tents 34,23,45 2011-03-15
+6800
+2300
+15750
+Name   Phone   Address   Items   Quantity   Date
+Betty 0235678795 Accra 34 Tables,Chairs,Tents 34,23,45 2011-03-15
+6800
+2300
+15750
+Risper 0235678795 Accra 34 Tables,Chairs,Tents 34,23,45 2017-04-10
+6800
+2300
+15750
+Name   Phone   Address   Items   Quantity   Date
+Claire 0560223057 Nakuru 56 Tables,Chairs,Tents 6,13,25 2017-03-27
 1200
-Name Phone Address Items Quantity Date
-ertyuio 1234567890 dfr fgh 7 2017-05-02
-Name Phone Address Items Quantity Date
-ertyuio 1234567890 dfr fgh 7 2017-05-02
-hjui 1234567890 dfr fgh 7 2017-03-28
-Name Phone Address Items Quantity Date
-fghjkl 2345675678 wer 5tyui 4 2017-03-27
-Name Phone Address Items Quantity Date
-fghjkl 2345675678 wer 5tyui 4 2017-03-27
-kol 7890234567 1234567890 fgh 7 2017-03-27
+1300
+8750
+Name   Phone   Address   Items   Quantity   Date
+Claire 0560223057 Nakuru 56 Tables,Chairs,Tents 6,13,25 2017-03-27
+1200
+1300
+8750
+Chemutai 0560223057 Nakuru 56 Tables,Chairs,Tents 6,13,25 2017-01-02
+1200
+1300
+8750

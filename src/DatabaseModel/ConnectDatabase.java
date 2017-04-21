@@ -13,8 +13,10 @@ import java.util.logging.Logger;
 
 /**
  *
- * @author Study
+ * @author Nanis
+ * This is a class to connect the database
  */
+
 public class ConnectDatabase {
     public Connection connect() throws InstantiationException, ClassNotFoundException, SQLException{
                              
@@ -22,9 +24,7 @@ public class ConnectDatabase {
             Class.forName("com.mysql.jdbc.Driver").newInstance();
             
             return DriverManager.getConnection(
-                    "jdbc:mysql://localhost:3300/allureRentals?user=root&password=nash@15492");
-            
-           
+                    "jdbc:mysql://localhost:3300/allureRentals?user=root&password=nash@15492"); 
         } catch (IllegalAccessException ex) {
             Logger.getLogger(ConnectDatabase.class.getName()).log(Level.SEVERE, null, ex);
         }

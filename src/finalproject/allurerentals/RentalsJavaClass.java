@@ -5,15 +5,13 @@
  */
 package finalproject.allurerentals;
 
-//import javafx.beans.property.IntegerProperty;
-//import javafx.beans.property.SimpleDoubleProperty;
-//import javafx.beans.property.SimpleIntegerProperty;
+
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
 /**
  *
- * @author Study
+ * @author Nanis
  */
 public class RentalsJavaClass {
 
@@ -118,9 +116,23 @@ public class RentalsJavaClass {
     public StringProperty nameProperty() {
         return name;
     }
+    
+    /**
+     * This is the empty constructor for the java class
+     */
     public RentalsJavaClass() {
         this(null,null,null,null,null,null);
     }
+    /**
+     * This is the constructor
+     * @param id this is the unique id of the client
+     * @param nm this is the name of the client
+     * @param phoneN this is the phone number of the client
+     * @param add this is the address of the client
+     * @param item this is the item bought 
+     * @param quant this is the quantity bought
+     * @param dt this is the date of the transaction
+     */
     public RentalsJavaClass(String id,String nm, String phoneN, String add, String item, String quant, String dt) {
         this.name = new SimpleStringProperty(nm);
         this.items = new SimpleStringProperty(item);
@@ -132,7 +144,15 @@ public class RentalsJavaClass {
        
     
     }
-    
+    /**
+     * This is the constructor
+     * @param nm this is the name of the client
+     * @param phoneN this is the phone number of the client
+     * @param add this is the address of the client
+     * @param item this is the item bought
+     * @param quant this is the quantity bought
+     * @param dt this is the date of the transaction
+     */
      public RentalsJavaClass(String nm, String phoneN, String add, String item, String quant, String dt) {
         this.name = new SimpleStringProperty();
         this.items = new SimpleStringProperty();

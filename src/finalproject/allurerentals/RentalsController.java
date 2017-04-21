@@ -159,11 +159,11 @@ public class RentalsController implements Initializable {
     }
     
     /**
-     * gets the details of the selected client for editing
-     * @param theClient 
-     * @param newClient
-     * @param id 
-     * @throws IOException
+     * This method gets the details of the selected client for editing
+     * @param theClient this is the selected client
+     * @param newClient this checks whether the client is new or not
+     * @param id this the position or index of the selected client in the table
+     * @throws IOException 
      */
     private void detailsDisplay(RentalsJavaClass theClient,Boolean newClient,int id) throws IOException {
         
@@ -199,13 +199,13 @@ public class RentalsController implements Initializable {
      * @throws IOException
      */
     private void addAction(ActionEvent event) throws IOException {
-         Stage previous = (Stage) backBtn.getScene().getWindow();
-         previous.close();
+         
         RentalsJavaClass selectedClient = null;
         boolean newClient = true;
         int id=-1;
         addClient(selectedClient,newClient,id);
-        
+        Stage previous = (Stage) backBtn.getScene().getWindow();
+         previous.close();
      
             }
     
@@ -230,16 +230,17 @@ public class RentalsController implements Initializable {
             
             //clientsTable.getItems().remove(selectedIndex);
         }
+        
       
         
     }
     
     /**
-     * opens a pop to add a client's details
-     * @param selectedClient
-     * @param id 
-     * @param newClient
-     * @throws IOexception
+     * This method opens a pop to add a client's details
+     * @param selectedClient this is the selected client
+     * @param id this is the index of the selected client in the table
+     * @param newClient this checks whether the selected client is new or not
+     * @throws IOexception on selection
      */
     private void addClient(RentalsJavaClass selectedClient,Boolean newClient, int id) throws IOException{
         detailsDisplay(selectedClient,newClient,id);

@@ -63,7 +63,7 @@ public static List<String> items = new ArrayList<>();
     private Button backBtn;
 
     private Stage thisStage;
-    private RentalsJavaClass updateRecords;
+    private RentalsJavaClass updateRecord;
     private boolean newClient;
     private int theID;
 
@@ -111,10 +111,11 @@ public static List<String> items = new ArrayList<>();
         if(checkNum.length()<10||checkNum.length()>10){
             checkNumLen.setText("Phone Number should be 10 digits");
         
-        }else if(!checkItem.equalsIgnoreCase("Tables")||!checkItem.
-                    equalsIgnoreCase("Chairs")||!checkItem.equalsIgnoreCase("Tents")){
-                checkTheItem.setText("The item can be a table/chair/tent");
-            }
+        }
+        //else if(!checkItem.equalsIgnoreCase("Tables")||!checkItem.
+                    //equalsIgnoreCase("Chairs")||!checkItem.equalsIgnoreCase("Tents")){
+                //checkTheItem.setText("The item can be a table/chair/tent");
+            //}
             
         else{
        if (newClient == true) {
@@ -157,9 +158,9 @@ public static List<String> items = new ArrayList<>();
 
 
     /**
-     * gets the the details of the added client 
+     * This method gets the the details of the added client 
      * @throws IOException,FileNotFoundException,SQLException,ClassNotFoundException
-     * @return updateRecords
+     * @return updateRecords This returns the added client
      */
     private RentalsJavaClass saveClient() throws FileNotFoundException, IOException, SQLException, ClassNotFoundException, InstantiationException, IllegalAccessException {
         LocalDate dt = editDate.getValue();
@@ -170,7 +171,7 @@ public static List<String> items = new ArrayList<>();
         String qua = editQuantity.getText();
         String date = dt.toString();
         
-        updateRecords = new RentalsJavaClass(editName.getText(), editNum.getText(),
+        updateRecord = new RentalsJavaClass(editName.getText(), editNum.getText(),
                  editAddress.getText(), editItems.getText(), editQuantity.getText(),
                  dt.toString());
         items.add(name + " " + num + " " + addr + " " + item+" "+qua+" "+date); 
@@ -182,15 +183,15 @@ public static List<String> items = new ArrayList<>();
                 writeToFile(items, "cost.txt",cost);
 
         //}
-        return updateRecords;
+        return updateRecord;
     }
     
     /**
-     * writes the details of a client to a file
-     * @param list
-     * @param path
-     * @param myCost
-     * @return strI
+     * This method writes the details of a client to a file
+     * @param list this is the list to hold the cost of the hired items
+     * @param path this is the path for the text file
+     * @param myCost this is the cost of each hired item
+     * @return strI This returns the cost of the items hired
      */
     private String writeToFile(java.util.List list, String path,String myCost) {
         String strI = null;
@@ -204,6 +205,8 @@ public static List<String> items = new ArrayList<>();
                     
 
         //String theItems=editItems.getText();
+        out.write("Name"+"   "+"Phone"+"   "+"Address"+"   "+"Items"+"   "+"Quantity"+"   "+"Date");
+        out.newLine();
             for(String theItem:words){
                 if(theItem.startsWith("tabl")||theItem.startsWith("Tabl")){
                     String theQuants=editQuantity.getText();
@@ -250,8 +253,7 @@ public static List<String> items = new ArrayList<>();
                
             
             }
-            out.write("Name"+" "+"Phone"+" "+"Address"+" "+"Items"+" "+"Quantity"+" "+"Date");
-            out.newLine();
+            
                     for (Object s : list) {
                         
                             out.write((String) s);
@@ -267,9 +269,9 @@ public static List<String> items = new ArrayList<>();
     }
 
     /**
-     * updates the details of the selected client
-     * @param clientId
-     * @return updateRecords
+     * This method updates the details of the selected client
+     * @param clientId this is the id of the selected client
+     * @return updateRecord this returns the selected client
      */
     private RentalsJavaClass updateClient(int clientId) {
         LocalDate dt = editDate.getValue();
@@ -280,7 +282,7 @@ public static List<String> items = new ArrayList<>();
         String item = editItems.getText();
         String qua = editQuantity.getText();
         String date = dt.toString();
-        updateRecords = new RentalsJavaClass(editName.getText(), editNum.getText(),
+        updateRecord = new RentalsJavaClass(editName.getText(), editNum.getText(),
                  editAddress.getText(), editItems.getText(), editQuantity.getText(),
                  dt.toString());
         
@@ -304,17 +306,17 @@ public static List<String> items = new ArrayList<>();
             }
 
         //}
-        return updateRecords;
+        return updateRecord;
     }
 
     /**
-     * displays the details of a client in the table/database
-     * @param client
-     * @param newClient
-     * @param id 
+     * This method displays the details of a client from the table
+     * @param client this is the selected client
+     * @param newClient checks whether the client is new or not
+     * @param id this is the index of the selected client
      */
     public void displayClient(RentalsJavaClass client,Boolean newClient,int id) {
-        this.updateRecords = client;
+        this.updateRecord = client;
         this.newClient = newClient;
         this.theID = id;
 
